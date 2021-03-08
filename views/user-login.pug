@@ -11,5 +11,11 @@ block content
     div(class='py-4')
       button(type='submit' class='btn btn-primary') Login
       a(href='/' class='btn btn-warning ml-2') Cancel
+  form(action='/user/login' method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    input(type='hidden' name='email' value='demo@demo.com')
+    input(type='hidden' name='password' value='qwertyuiop321')
+    div(class='py-4')
+      button(type='submit' class='btn btn-primary') Demo User
   div
     p: a(href='/user/signup') Don't have an account?
