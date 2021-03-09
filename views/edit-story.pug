@@ -1,0 +1,18 @@
+//- extends layout.pug 
+
+include utils.pug 
+
+block content
+    +validationErrorSummary(errors)
+    form(action=`/stories/edit/${story.id}` method='post')
+        input(type='hidden', name='_csrf', value=csrfToken)
+        +field('Title', 'title', story.title)
+        label Category
+        select(name='categoryId')
+            each category in categories     
+                option(value=category.id, selected=category.id===story.categoryId) #{category.name}
+        +field('Text', 'text', story.text, 'textarea')
+        div
+            button(type='submit') Update Story
+    form(action=`/stories/delete/${story.id}` method='delete')
+        button(type="submit") Delete Story

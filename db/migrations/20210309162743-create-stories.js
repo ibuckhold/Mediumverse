@@ -17,7 +17,7 @@ module.exports = {
         }
       },
       title: {
-        type: Sequelize.STRING(200),
+        type: Sequelize.STRING(100),
         allowNull: false
       },
       text: {
@@ -31,6 +31,10 @@ module.exports = {
           model: "Categories",
           key: "id"
         }
+      },
+      imageURL: {
+        type: Sequelize.STRING,
+        defaultValue: "https://images.immediate.co.uk/production/volatile/sites/3/2020/01/marvel-647cdb6.jpg?webp=true&quality=90&resize=620%2C413"
       },
       createdAt: {
         allowNull: false,
