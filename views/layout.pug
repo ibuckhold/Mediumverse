@@ -3,17 +3,28 @@ html
   head
       block head
         title="Mediumverse"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/index.css')
+        script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
   body
 
-    nav
-      if locals.authenticated
-        span Welcome #{user.username}!
-        form(action='/user/logout' method='post')
-          button(type='submit') Logout
-      else
-        span
-          a(href='/user/login') Login
-          a(href='/user/signup') Sign Up
+    div(class="header-nav__container")
+      div(class="navLeft")
+        p(class="siteTitle") MEDIUMVERSE
 
+      div(class="navRight")
+        if locals.authenticated
+          //- span Welcome #{user.username}!
+          div
+            //- will be an icon not a button
+            button(class="navButton" type="click" href=`/stories/create`) +
+          form(action='/user/logout' method='post')
+            button(type='submit' class="navButton" id="logout") LOGOUT
+
+          a(class="fas fa-mask profile-icon" href=`/${user.username}`)
+
+        else
+          div(id="login")
+            button(class="navButton" onclick="window.location.href='/user/login'") LOGIN
+          div(id="signup")
+            button(class="navButton" onclick="window.location.href='/user/signup'") SIGN UP
     block content
