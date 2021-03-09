@@ -125,19 +125,26 @@ router.post("/edit/:id(\\d+)", csrfProtection, storyValidators, asyncHandler(asy
     else res.redirect("/login");
 }));
 
-router.delete("/delete/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
+router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
     const story = await Story.findByPk(storyId);
+    // console.log(story);
     await story.destroy();
-    res.redirect('/stories');
+    res.redirect(`/${req.session.auth.userId}`);
 }));
 
-
-
-
-
-
-
+router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
+    console.log("test");
+    const storyId = parseInt(req.params.id, 10);
+    const story = await Story.findByPk(storyId);
+    const category = await Category.findByPk(story.categoryId);
+    const categoryName = category.name;
+    res.render("display-story", {
+        title: story.title,
+        story,
+        categoryName
+    });
+}));
 
 
 module.exports = router;
