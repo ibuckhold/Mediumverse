@@ -25,7 +25,7 @@ const loginValidators = [
   .withMessage("Please provide a value for password")
 ];
 
-router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
   const {email, password} = req.body;
 
   let errors =[];
@@ -39,7 +39,12 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, 
 
       if(passwordMatches){
         loginUser(req,res,user); // adds user to res.session.auth
-        return res.redirect("/");
+        return req.session.save(e => {
+          if(e){
+            next(e);
+          }
+          return res.redirect("/");
+        });
       }
     }
 
@@ -147,5 +152,10 @@ router.post('/signup', csrfProtection, signUpValidator, asyncHandler(async(req, 
   }
 }));
 
+
+router.post("/logout", asyncHandler(async (req,res) => {
+  logoutUser(req,res);
+  res.redirect("/");
+}));
 
 module.exports = router;
