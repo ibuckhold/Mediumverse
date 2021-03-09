@@ -1,5 +1,5 @@
 const express = require('express');
-const {User} = require("../db/models");
+const { User } = require("../db/models");
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
@@ -16,31 +16,31 @@ router.get("/login", csrfProtection, (req, res) => {
 
 const loginValidators = [
   check("email")
-  .isEmail()
-  .withMessage("Please enter a valid email")
-  .exists({checkFalsy: true})
-  .withMessage("Please provide a value for email"),
+    .isEmail()
+    .withMessage("Please enter a valid email")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for email"),
   check("password")
-  .exists({checkFalsy: true})
-  .withMessage("Please provide a value for password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for password")
 ];
 
 router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
-  const {email, password} = req.body;
+  const { email, password } = req.body;
 
-  let errors =[];
+  let errors = [];
   const validatorErrors = validationResult(req);
 
-  if(validatorErrors.isEmpty()){
-    const user = await User.findOne({where: {email}});
+  if (validatorErrors.isEmpty()) {
+    const user = await User.findOne({ where: { email } });
 
-    if(user !== null){
+    if (user !== null) {
       const passwordMatches = await bcrypt.compare(password, user.hashedPassword.toString());
 
-      if(passwordMatches){
-        loginUser(req,res,user); // adds user to res.session.auth
+      if (passwordMatches) {
+        loginUser(req, res, user); // adds user to res.session.auth
         return req.session.save(e => {
-          if(e){
+          if (e) {
             next(e);
           }
           return res.redirect("/");
@@ -122,7 +122,7 @@ const signUpValidator = [
     }),
 ]
 
-router.post('/signup', csrfProtection, signUpValidator, asyncHandler(async(req, res) => {
+router.post('/signup', csrfProtection, signUpValidator, asyncHandler(async (req, res) => {
   const {
     email,
     username,
@@ -153,9 +153,14 @@ router.post('/signup', csrfProtection, signUpValidator, asyncHandler(async(req, 
 }));
 
 
-router.post("/logout", asyncHandler(async (req,res) => {
-  logoutUser(req,res);
-  res.redirect("/");
+router.post("/logout", asyncHandler(async (req, res) => {
+  logoutUser(req, res);
+  return req.session.save(e => {
+    if (e) {
+      next(e);
+    }
+    return res.redirect("/");
+  })
 }));
 
 module.exports = router;
