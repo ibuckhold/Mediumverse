@@ -3,17 +3,21 @@ html
   head
       block head
         title="Mediumverse"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/index.css')
   body
 
-    nav
-      if locals.authenticated
-        span Welcome #{user.username}!
-        form(action='/user/logout' method='post')
-          button(type='submit') Logout
-      else
-        span
-          a(href='/user/login') Login
-          a(href='/user/signup') Sign Up
+    div(class="navbar")
+      nav
+        div(class="navLeft")
+          p(class="siteTitle") Mediumverse
+        div(class="navRight")
+          if locals.authenticated
+            span Welcome #{user.username}!
+            form(action='/user/logout' method='post')
+              button(type='submit') Logout
+          else
+            span
+              a(href='/user/login') Login
+              a(href='/user/signup') Sign Up
 
     block content
