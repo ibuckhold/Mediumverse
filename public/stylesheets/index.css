@@ -2,7 +2,7 @@
     color: #555555;
 } */
 
-.navbar {
+.header-nav_container {
     position: fixed;
     background-color: red;
     display: flex;
@@ -11,12 +11,12 @@
 
 .navLeft {
     background-color: blue;
-    /* display: flex; */
+    display: flex;
     align-items: left;
 }
 
 .navRight {
-    /* display: flex; */
+    display: flex;
     align-items: right;
 
 }

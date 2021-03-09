@@ -6,11 +6,18 @@ html
         link(rel='stylesheet' href='/stylesheets/index.css')
   body
 
-    div(class="navbar")
-      nav
-        div(class="navLeft")
-          p(class="siteTitle") Mediumverse
-        div(class="navRight")
+    div(class="header-nav__container")
+      span(class="header-nav__group")
+        a(class="header-nav__link")
+          div
+            p(class="siteTitle") Mediumverse
+
+      span(class="header-nav__group")
+        a(class="search")
+          div
+            p Search
+
+
           if locals.authenticated
             span Welcome #{user.username}!
             form(action='/user/logout' method='post')
