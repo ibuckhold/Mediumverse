@@ -1,6 +1,6 @@
-//- extends layout.pug 
+extends layout.pug
 
-include utils.pug 
+include utils.pug
 
 block content
     +validationErrorSummary(errors)
@@ -9,7 +9,7 @@ block content
         +field('Title', 'title', story.title)
         label Category
         select(name='categoryId')
-            each category in categories     
+            each category in categories
                 option(value=category.id) #{category.name}
         +field('Text', 'text', story.text, 'textarea')
         div
