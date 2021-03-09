@@ -1,15 +1,17 @@
-/* h1 {
-    color: #555555;
-} */
+
+.blocking-content {
+    margin-top: 120px;
+}
 
 .header-nav__container {
+    top: 0;
     position: fixed;
-    background-color:rgba(243, 67, 67, 0.678);
+    /* background-color:rgba(243, 67, 67, 0.678); */
     display: flex;
     justify-content: space-between;
-    height: 50px;
+    height: 110px;
     width: 100%;
-    border-bottom: black solid 1px;
+    border-bottom: red solid 2px;
 }
 
 .navRight {
@@ -17,24 +19,33 @@
     align-items: right;
     align-items: center;
     padding-right: 100px;
-    width: 200px;
+    width: 230px;
     justify-content: space-between;
 }
 
-.siteTitle {
-    font-weight: bold;
-    color: blue;
-    font-size: xx-large;
+.navLeft {
     padding-left: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .navButton {
+    color:whitesmoke;
+    background-color:rgb(31, 31, 255);
     border: black solid 1px;
     border-radius: 5px;
     font-size: medium;
-    padding: 2px 7px;
+    padding: 10px 20px;
 }
 
 .profile-icon {
-    color: whitesmoke;
+    color: rgb(31, 31, 255);
+    text-decoration: none;
+    font-size: 45px;
+}
+
+.createStoryIcon {
+    color: rgb(31, 31, 255);
+    text-decoration: none;
+    font-size: 45px;
 }
