@@ -1,0 +1,33 @@
+.create-story-form {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+#one {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    
+}
+
+.titleDiv {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.categoryDiv {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+.textDiv {
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+
+#two {
+    grid-column: 2/3;
+    grid-row: 5/6;
+}
