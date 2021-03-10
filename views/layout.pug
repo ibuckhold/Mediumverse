@@ -18,11 +18,13 @@ html
           form(action='/user/logout' method='post')
             button(type='submit' class="navButton" id="logout") LOG OUT
           div
-            a(class="fas fa-mask profile-icon" href=`/${user.username}`)
+            a(class="fas fa-mask profile-icon" href=`/${user.id}`)
+            
         else
           div(id="login")
             button(class="navButton" onclick="window.location.href='/user/login'") LOGIN
           div(id="signup")
             button(class="navButton" onclick="window.location.href='/user/signup'") SIGN UP
     div(class="blocking-content")
+      div #{title}
       block content

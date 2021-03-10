@@ -1,0 +1,14 @@
+extends layout.pug 
+
+block content
+    each story in userStories
+        div 
+            p Published on: #{story.updatedAt.toLocaleDateString("en-US")}
+            a(href=`/stories/${story.id}`) #{story.title}
+            p #{story.text.substring(0, 50) + "..."}
+        if locals.authenticated && user.id === story.userId
+            div 
+                form(action=`/stories/edit/${story.id}`)
+                    button(type='submit') Edit Story
+                form(action=`/stories/delete/${story.id}` method='post')
+                    button(type='submit') Delete Story
