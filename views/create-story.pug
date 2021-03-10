@@ -10,7 +10,7 @@ block head
 
 block content
     +validationErrorSummary(errors)
-    form(action='/stories/create' method='post' class='create-story-form')
+    form(action='/stories/create' method='post' class='create-story-form' enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=csrfToken)
         div(class='createStory-button' id='one')
             button(type='submit' class="navButton") Publish
@@ -22,5 +22,6 @@ block content
             +field('', 'title', story.title, "", "Title...", "textPlaceholder titleText")
         div(class="textDiv")
             +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
+            input(type='file', name='imageupload')
         div(class='createStory-button' id='two')
             button(type='submit' class="navButton") Publish
