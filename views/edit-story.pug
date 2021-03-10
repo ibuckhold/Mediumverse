@@ -4,7 +4,7 @@ include utils.pug
 
 block content
     +validationErrorSummary(errors)
-    form(action=`/stories/edit/${story.id}` method='post')
+    form(action=`/stories/edit/${story.id}` method='post' enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=csrfToken)
         +field('Title', 'title', story.title)
         label Category
@@ -12,6 +12,8 @@ block content
             each category in categories     
                 option(value=category.id, selected=category.id===story.categoryId) #{category.name}
         +field('Text', 'text', story.text, 'textarea')
+        div 
+            input(type='file', name='imageupload')
         div
             button(type='submit') Update Story
     form(action=`/stories/delete/${story.id}` method='post')
