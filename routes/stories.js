@@ -1,10 +1,11 @@
 const express = require('express');
-const { User, Story, Category } = require("../db/models");
-const router = express.Router();
-const { check, validationResult } = require('express-validator');
-const bcrypt = require('bcryptjs');
-const { csrfProtection, asyncHandler } = require('../utils');
 const multer = require('multer');
+
+const { User, Story, Category, Comment } = require("../db/models");
+const { check, validationResult } = require('express-validator');
+const { csrfProtection, asyncHandler } = require('../utils');
+
+const router = express.Router();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -120,6 +121,8 @@ router.get("/edit/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
 
     const story = await Story.findByPk(storyId);
 
+    console.log(story.Category.name);
+
     return res.render('edit-story', {
         title: 'Edit Story',
         story,
@@ -196,16 +199,28 @@ router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
     return res.redirect(`/${req.session.auth.userId}`);
 }));
 
-router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
+router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
-    const story = await Story.findByPk(storyId);
-    console.log("image URL:", story.imageURL);
-    const category = await Category.findByPk(story.categoryId);
-    const categoryName = category.name;
+    const story = await Story.findOne({
+        include: {
+            model: Category
+        },
+        where: {
+            id: storyId
+        }
+    });
+
+    const storyComments = await Comment.findAll({
+        include: [{
+            model: User
+        }],
+        where: { storyId }
+    });
+
     return res.render("display-story", {
-        title: story.title,
         story,
-        categoryName
+        storyComments,
+        csrfToken: req.csrfToken()
     });
 }));
 

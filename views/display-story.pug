@@ -1,9 +1,12 @@
 extends layout.pug
 
+include utils.pug
+
 block content 
+    +validationErrorSummary(errors)
     h1 #{story.title}
-    h2 #{categoryName}
-    h3 Last updated: #{story.updatedAt}
+    h2 #{story.Category.name}
+    h3 Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
     img(src=story.imageURL)
     div #{story.text}
 
@@ -12,3 +15,25 @@ block content
             button(type='submit') Edit Story
         form(action=`/stories/delete/${story.id}` method='post')
             button(type='submit') Delete Story
+
+    if locals.authenticated
+        form(action=`/comments/create/${story.id}` method="post")
+            input(type='hidden', name='_csrf', value=csrfToken)
+            +field("Add a Comment", "text", null, "textarea")
+            button(type="submit") Create Comment
+
+    //- Comments List
+    each comment in storyComments 
+        div 
+            span #{comment.User.username}: 
+            span #{comment.text} 
+            div Created on: #{comment.updatedAt.toLocaleDateString("en-US")}
+            //- Edit Button
+            if locals.authenticated && user.id === comment.userId
+                input(type="button" name="show-edit" id="show-edit" value="Edit Comment")
+                form(action=`/comments/edit/${comment.id}` method="post" id="edit-comment-form" hidden)
+                    input(type='hidden', name='_csrf', value=csrfToken)
+                    +field(null, "text", null, "textarea")
+                    button(type="submit") Edit Comment
+
+    script(src="/javascripts/edit-story.js" type="module")
