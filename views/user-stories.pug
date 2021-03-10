@@ -5,6 +5,8 @@ block content
         div 
             p Published on: #{story.updatedAt.toLocaleDateString("en-US")}
             a(href=`/stories/${story.id}`) #{story.title}
+            div
+                img(src=story.imageURL)
             p #{story.text.substring(0, 50) + "..."}
         if locals.authenticated && user.id === story.userId
             div 
