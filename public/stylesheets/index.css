@@ -6,7 +6,7 @@
 .header-nav__container {
     top: 0;
     position: fixed;
-    /* background-color:rgba(243, 67, 67, 0.678); */
+    background-color:white;
     display: flex;
     justify-content: space-between;
     height: 110px;
