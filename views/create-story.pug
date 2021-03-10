@@ -16,10 +16,10 @@ block content
         div(class='createStory-button' id='one')
             button(type='submit' class="navButton") Publish
         div(class="categoryDiv")
-            input(type="hidden" value=null class="categoryInput" name="categoryId")
+            input(type="hidden" value=1 class="categoryInput" name="categoryId")
             each category in categories
-                div(data-category-id=category.id)
-                    span(class="categoryOption") #{category.name}
+                div(data-category-id=category.id class="categoryBox")
+                    span(class=`categoryOption ${category.id === 1 ? "userSelected":""}` ) #{category.name}
                         img(src="")
             //- select(name='categoryId' class="dropdown")
             //-     option(class="categoryOption") Choose a category
@@ -30,7 +30,8 @@ block content
         div(class="textDiv")
             +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
         div(class="imageUpload")
-            img(class="far fa-images")
+            a(class="far fa-images navButton")
             input(type="file" id="actual-btn" name='imageupload')
+
         div(class='createStory-button' id='two')
             button(type='submit' class="navButton") Publish
