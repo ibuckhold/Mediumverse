@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     Story.belongsTo(models.User, {
       foreignKey: "id"
     });
+    Story.hasMany(models.Comment, {
+      foreignKey: "storyId"
+    });
   };
   return Story;
 };
