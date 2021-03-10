@@ -19,7 +19,7 @@ block content
     if locals.authenticated
         form(action=`/comments/create/${story.id}` method="post")
             input(type='hidden', name='_csrf', value=csrfToken)
-            +field("Add a Comment", "text", null, "textarea")
+            +field(null, "text", null, "textarea", 'Enter comment text')
             button(type="submit") Create Comment
 
     //- Comments List
@@ -35,5 +35,7 @@ block content
                     input(type='hidden', name='_csrf', value=csrfToken)
                     +field(null, "text", null, "textarea")
                     button(type="submit") Edit Comment
+                form(action=`/comments/delete/${comment.id}` method='post')
+                    button(type='submit') Delete Comment
 
     script(src="/javascripts/edit-story.js" type="module")

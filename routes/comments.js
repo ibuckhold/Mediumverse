@@ -116,4 +116,12 @@ router.post("/edit/:id(\\d+)", commentValidators, csrfProtection, asyncHandler(a
     else return res.redirect(`/stories/${storyId}`);
 }));
 
+router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
+    const commentId = parseInt(req.params.id, 10);
+    const comment = await Comment.findByPk(commentId);
+    const storyId = comment.storyId
+    await comment.destroy();
+    return res.redirect(`/stories/${storyId}`);
+}));
+
 module.exports = router;
