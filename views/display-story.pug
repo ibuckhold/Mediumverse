@@ -4,8 +4,7 @@ block content
     h1 #{story.title}
     h2 #{categoryName}
     h3 Last updated: #{story.updatedAt}
-    //- p #{story.imageURL}
-    //- img(src=`${story.imageURL}`)
+    img(src=story.imageURL)
     div #{story.text}
 
     if locals.authenticated && user.id === story.userId

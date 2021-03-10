@@ -3,8 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   const Story = sequelize.define('Story', {
     userId: DataTypes.INTEGER,
     title: DataTypes.STRING,
-    text: DataTypes.STRING,
-    categoryId: DataTypes.INTEGER
+    text: DataTypes.TEXT,
+    categoryId: DataTypes.INTEGER,
+    imageURL: DataTypes.TEXT
   }, {});
   Story.associate = function(models) {
     Story.belongsTo(models.Category, {
