@@ -1,16 +1,18 @@
-const createError = require('http-errors');
 const express = require('express');
+const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const { sequelize } = require('./db/models');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const storiesRouter = require('./routes/stories');
-const { restoreUser } = require('./auth');
+const commentsRouter = require("./routes/comments");
 
+const { sequelize } = require('./db/models');
+const { restoreUser } = require('./auth');
 
 const app = express();
 
@@ -42,6 +44,7 @@ app.use(restoreUser);
 app.use(indexRouter);
 app.use("/user", usersRouter);
 app.use("/stories", storiesRouter);
+app.use("/comments", commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
