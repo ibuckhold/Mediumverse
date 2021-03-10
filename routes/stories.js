@@ -61,16 +61,27 @@ router.post('/create', upload, csrfProtection, storyValidators, asyncHandler(asy
             text,
         } = req.body;
 
-        const imageURL = '/images/' + req.file.filename
-
         const userId = req.session.auth.userId;
-        const story = Story.build({
-            title,
-            categoryId,
-            text,
-            userId,
-            imageURL
-        });
+        let story;
+        
+        if (req.file) {
+            const imageURL = '/images/' + req.file.filename;
+            story = Story.build({
+                title,
+                categoryId,
+                text,
+                userId,
+                imageURL
+            });
+        } else {
+            story = Story.build({
+                title,
+                categoryId,
+                text,
+                userId
+            });
+        }
+        
         const validatorErrors = validationResult(req);
         if (validatorErrors.isEmpty()) {
             await story.save();
@@ -125,16 +136,28 @@ router.post("/edit/:id(\\d+)", upload, csrfProtection, storyValidators, asyncHan
         const {
             title,
             categoryId,
-            text } = req.body;
-        const imageURL = '/images/' + req.file.filename
+            text 
+        } = req.body;
 
-        const storyToUpdate = {
-            title,
-            categoryId,
-            text,
-            userId,
-            imageURL
-        };
+        let storyToUpdate;
+        if (req.file) {
+            const imageURL = '/images/' + req.file.filename;
+            storyToUpdate = {
+                title,
+                categoryId,
+                text,
+                userId,
+                imageURL
+            };
+        } else {
+            storyToUpdate = {
+                title,
+                categoryId,
+                text,
+                userId
+            };
+        }
+
 
         const validatorErrors = validationResult(req);
 
