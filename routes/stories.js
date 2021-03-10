@@ -62,14 +62,14 @@ router.post('/create', upload, csrfProtection, storyValidators, asyncHandler(asy
             text,
         } = req.body;
         const userId = req.session.auth.userId;
-        const categoryIdParse= parseInt(categoryId, 10);
+        const categoryIdParse = parseInt(categoryId, 10);
         let story = Story.build({
             title,
             text,
             userId
         });
         if (categoryIdParse) {
-            story.categoryId= categoryIdParse;
+            story.categoryId = categoryIdParse;
         };
         if (req.file) {
             story.imageURL = '/images/' + req.file.filename;
@@ -214,7 +214,10 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
         include: [{
             model: User
         }],
-        where: { storyId }
+        where: { storyId },
+        order: [[
+            'createdAt', 'DESC'
+        ]]
     });
 
     return res.render("display-story", {

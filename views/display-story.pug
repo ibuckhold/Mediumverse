@@ -27,7 +27,7 @@ block content
         div 
             span #{comment.User.username}: 
             span #{comment.text} 
-            div Created on: #{comment.updatedAt.toLocaleDateString("en-US")}
+            div Created on: #{comment.createdAt.toLocaleDateString("en-US")}
             //- Edit Button
             if locals.authenticated && user.id === comment.userId
                 input(type="button" name="show-edit" id="show-edit" value="Edit Comment")
