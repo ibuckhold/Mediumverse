@@ -1,23 +1,24 @@
 .create-story-form {
     display: grid;
     grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 5% 5% 5% 80% 5%;
     align-items: center;
     justify-items: center;
+    height: 1000px;
 }
 
 #one {
     grid-column: 2/3;
     grid-row: 1/2;
-    
+
 }
 
-.titleDiv {
+.categoryDiv {
     grid-column: 2/3;
     grid-row: 2/3;
 }
 
-.categoryDiv {
+.titleDiv {
     grid-column: 2/3;
     grid-row: 3/4;
 }
@@ -25,9 +26,28 @@
 .textDiv {
     grid-column: 2/3;
     grid-row: 4/5;
+    align-self: flex-start;
+    padding-top: 10px;
 }
 
 #two {
     grid-column: 2/3;
     grid-row: 5/6;
+}
+
+.textPlaceholder {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, cursive;
+    width: 600px;
+    border: none;
+}
+
+.titleText{
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.contentText {
+    min-height: 500px;
+    background-color: rgba(128, 128, 128, 0.212);
 }

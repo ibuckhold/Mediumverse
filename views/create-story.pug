@@ -13,15 +13,14 @@ block content
     form(action='/stories/create' method='post' class='create-story-form')
         input(type='hidden', name='_csrf', value=csrfToken)
         div(class='createStory-button' id='one')
-            button(type='submit' class="navButton") Create Story
-        div(class="titleDiv")
-            +field('Title', 'title', story.title="Title")
+            button(type='submit' class="navButton") Publish
         div(class="categoryDiv")
-            label Category
             select(name='categoryId')
                 each category in categories
                     option(value=category.id) #{category.name}
+        div(class="titleDiv")
+            +field('', 'title', story.title, "", "Title...", "textPlaceholder titleText")
         div(class="textDiv")
-            +field('Text', 'text', story.text="Tell your story...", 'textarea')
+            +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
         div(class='createStory-button' id='two')
-            button(type='submit' class="navButton") Create Story
+            button(type='submit' class="navButton") Publish
