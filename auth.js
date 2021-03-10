@@ -1,18 +1,11 @@
 const {User} = require("./db/models");
 
 const loginUser = (req, res, user) => {
-    console.log("test before");
     req.session.auth = {userId: user.id}
-    console.log(req.session.auth);
-    console.log("test after");
 }
 
 const logoutUser = (req, res) => {
-    console.log("test before delete session");
     delete req.session.auth;
-    console.log(req.session.auth);
-    console.log("test after delete session");
-
 }
 
 const requireAuth = (req, res, next) => {

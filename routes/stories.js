@@ -11,7 +11,7 @@ router.get('/create', csrfProtection, async (req, res) => {
     });
     const story = Story.build();
     res.render('create-story', {
-        title: 'Create new story',
+        title: 'Create New Story',
         story,
         categories,
         csrfToken: req.csrfToken()
@@ -47,14 +47,14 @@ router.post('/create', csrfProtection, storyValidators, asyncHandler(async (req,
         const validatorErrors = validationResult(req);
         if (validatorErrors.isEmpty()) {
             await story.save();
-            res.redirect('/stories');
+            res.redirect(`/stories/${story.id}`);
         } else {
             const categories = await Category.findAll({
                 order: [['name', 'ASC']]
             });
             const errors = validatorErrors.array().map((err) => err.msg);
             res.render('create-story', {
-                title: 'Create new story',
+                title: 'Create New Story',
                 errors,
                 story,
                 categories,
@@ -74,10 +74,9 @@ router.get("/edit/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
     
     const story = await Story.findByPk(storyId);
-    // console.log(story);
 
     res.render('edit-story', {
-        title: 'Edit story',
+        title: 'Edit Story',
         story,
         categories,
         csrfToken: req.csrfToken()
@@ -85,11 +84,17 @@ router.get("/edit/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
 }));
 
 router.post("/edit/:id(\\d+)", csrfProtection, storyValidators, asyncHandler(async (req, res) => {
-    const storyId = parseInt(req.params.id, 10);
-    
-    const story = await Story.findByPk(storyId);
+    // If a user is logged in
     if (req.session.auth) {
+        const storyId = parseInt(req.params.id, 10);
+        const story = await Story.findByPk(storyId);
+
         const userId = req.session.auth.userId;
+        // If logged in user is not the user who created story
+        // Ask Chris
+        if (userId !== story.userId) {
+            return res.redirect("/");
+        }
         const {
             title,
             categoryId,
@@ -113,7 +118,7 @@ router.post("/edit/:id(\\d+)", csrfProtection, storyValidators, asyncHandler(asy
             });
             const errors = validatorErrors.array().map((err) => err.msg);
             res.render('edit-story', {
-                title: 'Edit story',
+                title: 'Edit Story',
                 errors,
                 story: {...storyToUpdate, id: storyId},
                 categories,
@@ -128,15 +133,14 @@ router.post("/edit/:id(\\d+)", csrfProtection, storyValidators, asyncHandler(asy
 router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
     const story = await Story.findByPk(storyId);
-    // console.log(story);
     await story.destroy();
     res.redirect(`/${req.session.auth.userId}`);
 }));
 
 router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
-    console.log("test");
     const storyId = parseInt(req.params.id, 10);
     const story = await Story.findByPk(storyId);
+    // console.log(story)
     const category = await Category.findByPk(story.categoryId);
     const categoryName = category.name;
     res.render("display-story", {
