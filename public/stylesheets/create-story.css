@@ -53,23 +53,54 @@
 .categoryDiv {
     grid-column: 2/3;
     grid-row: 5/6;
+    /* border: solid 1px rgb(45, 45, 255); */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .dropdown {
     border: 1px solid rgb(31, 31, 255);
 }
 
-.categoryOption {
-
-}
-
 .imageUpload {
     grid-column: 2/3;
     grid-row: 6/7;
     justify-content: flex-start;
+    margin-right: 508px;
 }
 
 #two {
     grid-column: 2/3;
     grid-row: 6/7;
+    margin-left: 508px;
+}
+
+.categoryBox {
+    background-color: rgba(156, 188, 214, 0.76);
+    border: solid 1px rgb(45, 45, 255);
+    border-radius: 10px;
+    padding: 5px 5px;
+    margin: 5px 5px;
+}
+
+.categoryBox:hover {
+    background-color: rgba(216, 236, 253, 0.76);
+    border: solid 2px red ;
+    /* dancing later */
+    /* height: 20px; */
+}
+
+.userSelected {
+    color: red;
+    /* changing how to choose box */
+}
+
+@media screen and (max-width: 600) {
+    .textPlaceholder {
+        display: block;
+    }
+    .create-story-form {
+        width: ;
+    }
 }

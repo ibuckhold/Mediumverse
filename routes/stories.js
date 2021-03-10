@@ -60,30 +60,37 @@ router.post('/create', upload, csrfProtection, storyValidators, asyncHandler(asy
             categoryId,
             text,
         } = req.body;
-
         const userId = req.session.auth.userId;
-        let story;
-        
+        const categoryIdParse= parseInt(categoryId, 10);
+        let story = Story.build({
+            title,
+            text,
+            userId
+        });
+        if (categoryIdParse) {
+            story.categoryId= categoryIdParse;
+        };
         if (req.file) {
-            const imageURL = '/images/' + req.file.filename;
-            story = Story.build({
-                title,
-                categoryId,
-                text,
-                userId,
-                imageURL
-            });
-        } else {
-            story = Story.build({
-                title,
-                categoryId,
-                text,
-                userId
-            });
-        }
-        
+            story.imageURL = '/images/' + req.file.filename;
+            // story = Story.build({
+            //     title,
+            //     categoryId: categoryIdParse,
+            //     text,
+            //     userId,
+            //     imageURL
+            // });
+        } //else {
+        //     story = Story.build({
+        //         title,
+        //         categoryId: categoryIdParse,
+        //         text,
+        //         userId
+        //     });
+        // }
+
         const validatorErrors = validationResult(req);
         if (validatorErrors.isEmpty()) {
+            // console.log(story)
             await story.save();
             return res.redirect(`/stories/${story.id}`);
         } else {
@@ -136,7 +143,7 @@ router.post("/edit/:id(\\d+)", upload, csrfProtection, storyValidators, asyncHan
         const {
             title,
             categoryId,
-            text 
+            text
         } = req.body;
 
         let storyToUpdate;
