@@ -120,8 +120,9 @@ router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
     const commentId = parseInt(req.params.id, 10);
     const comment = await Comment.findByPk(commentId);
     const storyId = comment.storyId
-    await comment.destroy();
-    return res.redirect(`/stories/${storyId}`);
+    const removeComment = await comment.destroy();
+    res.json(removeComment)
+    // return res.redirect(`/stories/${storyId}`);
 }));
 
 module.exports = router;
