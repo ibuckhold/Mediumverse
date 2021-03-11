@@ -30,7 +30,9 @@ block content
                 div(id='story-delete')
                     form(action=`/stories/delete/${story.id}` method='post')
                         button(type='submit') Delete Story
-
+                div
+                    span(id="likes") #{storyLikes} people liked this!
+                    button(type="click" id="likeButton" data-story-id=story.id) Like!
 
     div(id='comment-section' hidden)
         div(id='close-comments')
@@ -60,3 +62,4 @@ block content
                         //-     button(type='submit' class='comment-div-buttons') Delete
 
     script(src="/javascripts/edit-story.js" type="module")
+    script(src="/javascripts/display-story.js" type="module")

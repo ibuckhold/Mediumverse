@@ -1,3 +1,7 @@
+body {
+    /* background-color: rgb(36, 36, 36); */
+    background-color: whitesmoke;
+}
 
 .blocking-content {
     margin-top: 120px;
@@ -11,7 +15,9 @@
     justify-content: space-between;
     height: 110px;
     width: 100%;
-    border-bottom: red solid 2px;
+    border-bottom: red solid 4px;
+    /* background-color: black; */
+    background-color: rgb(108, 106, 106);
 }
 
 .navRight {
@@ -30,12 +36,19 @@
 }
 
 .navButton {
-    color:whitesmoke;
-    background-color:rgb(31, 31, 255);
-    border: black solid 1px;
+    /* color: whitesmoke; */
+    /* color: black; */
+    color: rgb(31, 31, 255);
+
+    /* Transparent */
+    background-color:rgb(31, 31, 255, 0);
+    
+    /* background-color: black; */
+    /* border: black solid 1px; */
     border-radius: 5px;
     font-size: medium;
     padding: 10px 20px;
+    border: 3px solid rgb(31, 31, 255);
 }
 
 .profile-icon {
@@ -54,4 +67,12 @@
     display: flex;
     width: 100%;
     height: 100%;
+}
+
+/* Title Header */
+#title-header {
+    font-family: 'Marvel', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-size: 40px;
+    /* color: whitesmoke; */
 }
