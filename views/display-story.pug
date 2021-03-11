@@ -54,8 +54,8 @@ block content
                         form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` hidden)
                             input(type='hidden', name='_csrf', value=csrfToken)
                             +field(null, "text", null, "textarea", 'Enter comment text to edit')
-                            button(type="submit") Edit Comment
+                            button(type="submit" class='comment-div-buttons') Edit
                         form(action=`/comments/delete/${comment.id}` method='post')
-                            button(type='submit') Delete Comment
+                            button(type='submit' class='comment-div-buttons') Delete
 
     script(src="/javascripts/edit-story.js" type="module")

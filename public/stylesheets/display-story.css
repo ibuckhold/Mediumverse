@@ -170,3 +170,13 @@ span{
     font-size: 14px;
     padding: 10px;
 }
+
+#comment-buttons-div{
+    display: flex;
+}
+
+.comment-div-buttons{
+    background-color: white;
+    border-style: none;
+    color: blue;
+}
