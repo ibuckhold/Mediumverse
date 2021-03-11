@@ -2,7 +2,7 @@ extends layout.pug
 
 include utils.pug
 
-block content 
+block content
     +validationErrorSummary(errors)
     h1 #{story.title}
     h2 #{story.Category.name}
@@ -15,18 +15,25 @@ block content
             button(type='submit') Edit Story
         form(action=`/stories/delete/${story.id}` method='post')
             button(type='submit') Delete Story
+        div
+            span(id="likes") #{storyLikes} people liked this!
+            button(type="click" id="likeButton" data-story-id=story.id) Like!
 
     if locals.authenticated
         form(action=`/comments/create/${story.id}` method="post")
             input(type='hidden', name='_csrf', value=csrfToken)
             +field(null, "text", null, "textarea", 'Enter comment text')
             button(type="submit") Create Comment
+        //- div
+        //-     span #{storyLikes} people liked this!
+        //- button(type="click" id="likeButton") Like!
+
 
     //- Comments List
-    each comment in storyComments 
-        div 
-            span #{comment.User.username}: 
-            span #{comment.text} 
+    each comment in storyComments
+        div
+            span #{comment.User.username}:
+            span #{comment.text}
             div Created on: #{comment.createdAt.toLocaleDateString("en-US")}
             //- Edit Button
             if locals.authenticated && user.id === comment.userId
@@ -39,3 +46,4 @@ block content
                     button(type='submit') Delete Comment
 
     script(src="/javascripts/edit-story.js" type="module")
+    script(src="/javascripts/display-story.js" type="module")
