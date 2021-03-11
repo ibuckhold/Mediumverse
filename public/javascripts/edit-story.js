@@ -1,5 +1,8 @@
 const showEditButtons = document.querySelectorAll('[id^="show-edit"]');
 
+const showCommentsButton = document.getElementById('show-comments')
+const closeCommentsButton = document.getElementById('close-comments')
+
 showEditButtons.forEach(showEditButton => {
     showEditButton.addEventListener("click", event => {
         const commentId = showEditButton.id.slice(10)
@@ -9,3 +12,17 @@ showEditButtons.forEach(showEditButton => {
         showEditButton.setAttribute("hidden", true);
     })
 });
+
+showCommentsButton.addEventListener('click', event => {
+    const commentForm = document.getElementById('comment-section')
+    commentForm.removeAttribute('hidden')
+})
+
+closeCommentsButton.addEventListener('click', event => {
+    const commentForm = document.getElementById('comment-section')
+    if (commentForm.style.visibility === hidden) {
+        commentForm.style.visibility = visible;
+    } else {
+        commentForm.style.visibility = hidden;
+    }
+})

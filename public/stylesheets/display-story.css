@@ -1,0 +1,114 @@
+#story-page{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#title-container{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+}
+
+#story-title{
+    display: flex;
+    justify-content: center;
+    font-size: 6rem;
+    padding-top: 20px;
+    width: auto;
+    align-items: center;;
+}
+
+#story-category{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 3rem;
+}
+#story-picture{
+    width: 80%;
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#story-picture img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#story-text{
+    width: 60vw;
+    font-size: 24px;
+}
+
+#user-features{
+    width: 60vw;
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-between;
+    height: 5vh;
+    padding-top: 15px;
+}
+
+#modify-story{
+    display: flex;
+    width: 30%;
+    height: 4vh;
+    justify-content: flex-end;
+}
+
+#story-edit button{
+    color:whitesmoke;
+    background-color:rgb(31, 31, 255);
+    border: black solid 1px;
+    border-radius: 5px;
+    font-size: medium;
+    padding: 10px 20px;
+    height: 100%;
+}
+
+#story-delete button {
+    color:whitesmoke;
+    background-color:rgb(31, 31, 255);
+    border: black solid 1px;
+    border-radius: 5px;
+    font-size: medium;
+    padding: 10px 20px;
+    height: 100%;
+}
+
+#show-comments{
+    color:whitesmoke;
+    background-color:rgb(31, 31, 255);
+    border: black solid 1px;
+    border-radius: 5px;
+    font-size: medium;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 4vh;
+    align-items: center;
+}
+
+#show-comments::before{
+    content: '\1F4AC';
+    align-items: center;
+}
+
+#comment-section{
+    width: 30%;
+    z-index: 1;
+    position: fixed;
+    height: 100%;
+    right: 0px;
+    top: 112px;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-left: 2px solid black;
+}
