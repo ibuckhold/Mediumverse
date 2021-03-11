@@ -15,6 +15,8 @@ block content
             button(type='submit') Edit Story
         form(action=`/stories/delete/${story.id}` method='post')
             button(type='submit') Delete Story
+
+    else if locals.authenticated && user.id !== story.userId
         div
             span(id="likes") #{storyLikes} people liked this!
             button(type="click" id="likeButton" data-story-id=story.id) Like!
