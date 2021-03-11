@@ -4,6 +4,7 @@ const showEditButtons = document.querySelectorAll('[id^="show-edit"]');
 const showCommentsButton = document.getElementById('show-comments')
 const closeCommentsButton = document.getElementById('close-comments');
 const deleteCommentButtons = document.querySelectorAll('input[name=delete-comment]')
+const deleteHideButton = document.getElementById('[id^="show-delete"]')
 
 showEditButtons.forEach(showEditButton => {
     showEditButton.addEventListener("click", event => {
@@ -12,6 +13,7 @@ showEditButtons.forEach(showEditButton => {
         const editCommentForm = document.getElementById(editFormId)
         editCommentForm.removeAttribute("hidden");
         showEditButton.setAttribute("hidden", true);
+        deleteHideButton.setAttribute("hidden", true);
     })
 });
 

@@ -45,6 +45,7 @@
 #story-text{
     width: 60vw;
     font-size: 24px;
+    white-space: pre-wrap;
 }
 
 #user-features{
@@ -135,6 +136,11 @@ textarea:focus{
 
 #submit-comment-button{
     margin-bottom: 5px;
+}
+
+.edit-form{
+    width: 90%;
+    
 }
 
 #comment-section{

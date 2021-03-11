@@ -47,14 +47,14 @@ block content
                 span #{comment.User.username}
                 div Posted: #{comment.createdAt.toLocaleDateString("en-US")}
                 div(id='comment-body')
-                    span #{comment.text} 
+                    pre=comment.text
                 div(id='comment-buttons-div')
                     if locals.authenticated && user.id === comment.userId
-                        input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons') 
-                        form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` hidden)
+                        input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
+                        form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` class='edit-form' hidden)
                             input(type='hidden', name='_csrf', value=csrfToken)
                             +field(null, "text", null, "textarea", 'Edit comment...')
-                            button(type="submit" class='comment-div-buttons') Edit
+                            button(type="submit" class='comment-div-buttons') Confirm
                             input(type="button" name="delete-comment" id=`${comment.id}` value="Delete" class='comment-div-buttons ')
                         //- form(action=`/comments/delete/${comment.id}` method='post' id=`delete-comment-form-${comment.id}` hidden)
                         //-     button(type='submit' class='comment-div-buttons') Delete
