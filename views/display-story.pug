@@ -34,26 +34,28 @@ block content
 
     div(id='comment-section' hidden)
         div(id='close-comments')
-            button(id='close-comments') Exit
+            div(id='close-comments-button-div')
+                button(id='close-comments-button') X
         if locals.authenticated
-            form(action=`/comments/create/${story.id}` method="post")
+            form(action=`/comments/create/${story.id}` method="post" id='create-comment-form')
                 input(type='hidden', name='_csrf', value=csrfToken)
                 +field(null, "text", null, "textarea", 'Enter comment text')
-                button(type="submit") Create Comment
+                button(type="submit" id='submit-comment-button') Add Comment
 
         each comment in storyComments 
-            div 
-                span #{comment.User.username}: 
-                span #{comment.text} 
-                div Created on: #{comment.createdAt.toLocaleDateString("en-US")}
-                //- Edit Button
-                if locals.authenticated && user.id === comment.userId
-                    input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit Comment")
-                    form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` hidden)
-                        input(type='hidden', name='_csrf', value=csrfToken)
-                        +field(null, "text", null, "textarea", 'Enter comment text to edit')
-                        button(type="submit") Edit Comment
-                    form(action=`/comments/delete/${comment.id}` method='post')
-                        button(type='submit') Delete Comment
+            div(id='user-comments')
+                span #{comment.User.username}
+                div Posted: #{comment.createdAt.toLocaleDateString("en-US")}
+                div(id='comment-body')
+                    span #{comment.text} 
+                div(id='comment-buttons-div')
+                    if locals.authenticated && user.id === comment.userId
+                        input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit Comment")
+                        form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` hidden)
+                            input(type='hidden', name='_csrf', value=csrfToken)
+                            +field(null, "text", null, "textarea", 'Enter comment text to edit')
+                            button(type="submit") Edit Comment
+                        form(action=`/comments/delete/${comment.id}` method='post')
+                            button(type='submit') Delete Comment
 
     script(src="/javascripts/edit-story.js" type="module")

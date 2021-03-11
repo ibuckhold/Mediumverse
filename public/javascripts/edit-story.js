@@ -15,14 +15,16 @@ showEditButtons.forEach(showEditButton => {
 
 showCommentsButton.addEventListener('click', event => {
     const commentForm = document.getElementById('comment-section')
-    commentForm.removeAttribute('hidden')
+    console.log('show comments')
+    if (commentForm.style.visibility === 'hidden') {
+        commentForm.style.visibility = 'visible';
+    } else {
+        commentForm.style.visibility = 'hidden';
+    }
 })
 
 closeCommentsButton.addEventListener('click', event => {
     const commentForm = document.getElementById('comment-section')
-    if (commentForm.style.visibility === hidden) {
-        commentForm.style.visibility = visible;
-    } else {
-        commentForm.style.visibility = hidden;
-    }
+    console.log('exit comment')
+    commentForm.style.visibility = 'hidden';
 })
