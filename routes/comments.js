@@ -46,7 +46,10 @@ router.post("/create/:id(\\d+)", commentValidators, csrfProtection, asyncHandler
                 include: [{
                     model: User
                 }],
-                where: { storyId }
+                where: { storyId },
+                order: [[
+                    'createdAt', 'DESC'
+                ]]
             });
 
             return res.render("display-story", {
@@ -55,7 +58,7 @@ router.post("/create/:id(\\d+)", commentValidators, csrfProtection, asyncHandler
                 storyComments
             });
         }
-    } 
+    }
     else return res.redirect(`/stories/${storyId}`);
 }));
 
@@ -97,7 +100,10 @@ router.post("/edit/:id(\\d+)", commentValidators, csrfProtection, asyncHandler(a
                 include: {
                     model: User
                 },
-                where: { storyId }
+                where: { storyId },
+                order: [[
+                    'createdAt', 'DESC'
+                ]]
             });
 
             return res.render("display-story", {
@@ -108,6 +114,14 @@ router.post("/edit/:id(\\d+)", commentValidators, csrfProtection, asyncHandler(a
         }
     }
     else return res.redirect(`/stories/${storyId}`);
+}));
+
+router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
+    const commentId = parseInt(req.params.id, 10);
+    const comment = await Comment.findByPk(commentId);
+    const storyId = comment.storyId
+    await comment.destroy();
+    return res.redirect(`/stories/${storyId}`);
 }));
 
 module.exports = router;
