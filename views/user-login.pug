@@ -2,20 +2,28 @@ extends layout.pug
 
 include utils.pug
 
+block head
+  title() Mediumverse
+  link(rel='stylesheet' href='/stylesheets/index.css')
+  link(rel='stylesheet' href='/stylesheets/user-login.css')
+
+
 block content
   +validationErrorSummary(errors)
-  form(action='/user/login' method='post')
+  form(action='/user/login' method='post' class="login-form")
     input(type='hidden' name='_csrf' value=csrfToken)
-    +field('Email Address', 'email', email)
-    +field('Password', 'password', null, 'password')
+    div(class="email-login")
+      +field('Email Address', 'email', email)
+    div(class="password-login")
+      +field('Password', 'password', null, 'password')
     div(class='py-4')
-      button(type='submit' class='btn btn-primary') Login
+      button(type='submit' class='btn btn-primary navButton') Login
       a(href='/' class='btn btn-warning ml-2') Cancel
   form(action='/user/login' method='post')
     input(type='hidden' name='_csrf' value=csrfToken)
     input(type='hidden' name='email' value='demo@demo.com')
     input(type='hidden' name='password' value='qwertyuiop321')
     div(class='py-4')
-      button(type='submit' class='btn btn-primary') Demo User
+      button(type='submit' class='btn btn-primary navButton') Demo User
   div
     p: a(href='/user/signup') Don't have an account?
