@@ -1,7 +1,11 @@
-const showEditButton = document.getElementById("show-edit");
-const editCommentForm = document.getElementById("edit-comment-form");
+const showEditButtons = document.querySelectorAll('[id^="show-edit"]');
 
-showEditButton.addEventListener("click", event => {
-    editCommentForm.removeAttribute("hidden");
-    showEditButton.setAttribute("hidden", true);
+showEditButtons.forEach(showEditButton => {
+    showEditButton.addEventListener("click", event => {
+        const commentId = showEditButton.id.slice(10)
+        const editFormId = 'edit-comment-form-' + commentId
+        const editCommentForm = document.getElementById(editFormId)
+        editCommentForm.removeAttribute("hidden");
+        showEditButton.setAttribute("hidden", true);
+    })
 });

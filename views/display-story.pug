@@ -30,10 +30,10 @@ block content
             div Created on: #{comment.createdAt.toLocaleDateString("en-US")}
             //- Edit Button
             if locals.authenticated && user.id === comment.userId
-                input(type="button" name="show-edit" id="show-edit" value="Edit Comment")
-                form(action=`/comments/edit/${comment.id}` method="post" id="edit-comment-form" hidden)
+                input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit Comment")
+                form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` hidden)
                     input(type='hidden', name='_csrf', value=csrfToken)
-                    +field(null, "text", null, "textarea")
+                    +field(null, "text", null, "textarea", 'Enter comment text to edit')
                     button(type="submit") Edit Comment
                 form(action=`/comments/delete/${comment.id}` method='post')
                     button(type='submit') Delete Comment
