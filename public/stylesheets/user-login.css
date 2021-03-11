@@ -1,25 +1,99 @@
+/* Don't display the title div for this page. */
+#title-header {
+    display: none;
+}
+
+/* Styling for the body block. */
+.blocking-content {
+    height: 90em;
+    /* background-color: rgb(36, 36, 36); */
+}
+
+/* Styling for the div containing all login content */
+#login-block {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 30%;
+    height: auto;
+    /* margin-top: 100px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* margin-top: 100px; */
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    background-color: rgb(223, 223, 223);
+    border-radius: 20px;
+}
+
+/* Styping for Login title */
+#login-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+/* BEGIN: Styles for login form */
 .login-form {
     display: grid;
     grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-rows: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
-    min-height: 300px;
+    min-height: 200px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .email-login {
     grid-column: 2/3;
-    grid-row: 2/3;
+    grid-row: 1/2;
+    /* border: 1px solid green; */
 }
 
 .password-login {
     grid-column: 2/3;
-    grid-row: 3/4;
+    grid-row: 2/3;
 }
 
 .py-4 {
     grid-column: 2/3;
+    grid-row: 3/4;
+}
+/* END: Styles for login form */
+
+.navButton {
+    margin-right: 10px;
+    grid-column: 1/2;
     grid-row: 4/5;
 }
 
+/* Creates space between label and input */
+.form-control {
+    margin-left: 10px;
+}
 
+/* Styling for bottom row of loging block */
+#login-block-bottom {
+    display: flex;
+
+    margin-top: 20px;
+}
+
+/* #email {
+    margin-left: 10px;
+}
+
+#password {
+    margin-left: 10px;
+} */
+
+/* @media screen and (min-width: 750) {
+    .login-block {
+        width: 100%;
+    }
+} */

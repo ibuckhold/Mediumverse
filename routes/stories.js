@@ -121,7 +121,7 @@ router.get("/edit/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
 
     const story = await Story.findByPk(storyId);
-
+    
     return res.render('edit-story', {
         title: 'Edit Story',
         story,

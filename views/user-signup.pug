@@ -9,18 +9,20 @@ block head
 
 block content
   +validationErrorSummary(errors)
-  form(action='/user/signup' method='post' class="signup-form")
-    input(type='hidden' name='_csrf' value=csrfToken)
-    div(class="username-signup")
-      +field('Username', 'username', user.username)
-    div(class="email-signup")
-      +field('Email Address', 'email', user.email)
-    div(class="password-signup")
-      +field('Password', 'password', user.password, 'password')
-    div(class="confirm-signup")
-      +field('Confirm Password', 'confirmPassword', '', 'password')
-    div(class='py-4')
-      button(type='submit' class='btn btn-primary navButton') Register
-      a(href='/' class='btn btn-warning ml-2') Cancel
-  div(class="py-4")
-    p: a(href='/user/login') Already have an account?
+  div(id="signup-block")
+    div(id="signup-text") Sign Up
+    form(action='/user/signup' method='post' class="signup-form")
+      input(type='hidden' name='_csrf' value=csrfToken)
+      div(class="username-signup")
+        +field('Username:', 'username', user.username)
+      div(class="email-signup")
+        +field('Email Address:', 'email', user.email)
+      div(class="password-signup")
+        +field('Password:', 'password', user.password, 'password')
+      div(class="confirm-signup")
+        +field('Confirm Password:', 'confirmPassword', '', 'password')
+      div(class='py-4')
+        button(type='submit' class='btn btn-primary navButton') Register
+        a(href='/' class='btn btn-warning ml-2') Cancel
+    div(class="py-4")
+      p: a(href='/user/login') Already have an account?

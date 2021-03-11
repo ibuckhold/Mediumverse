@@ -1,34 +1,79 @@
+/* Don't display the title div for this page. */
+#title-header {
+    display: none;
+}
+
+/* Styling for the body block. */
+.blocking-content {
+    height: 90em;
+    /* background-color: rgb(36, 36, 36); */
+}
+
+/* Styling for the div containing all signup content */
+#signup-block {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 30%;
+    height: auto;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    background-color: rgb(223, 223, 223);
+    border-radius: 20px;
+}
+
+/* Styping for signup title */
+#signup-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    padding-top: 10px;
+}
+
 .signup-form {
     display: grid;
     grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
-    height: 200px;
+    min-height: 300px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .username-signup {
     grid-column: 2/3;
-    grid-row: 2/3;
+    grid-row: 1/2;
 }
 
 .email-signup {
     grid-column: 2/3;
-    grid-row: 3/4;
+    grid-row: 2/3;
 }
 
 .password-signup {
     grid-column: 2/3;
-    grid-row: 4/5;
+    grid-row: 3/4;
 }
 
 .confirm-signup {
     grid-column: 2/3;
-    grid-row: 5/6;
+    grid-row: 4/5;
 }
 
 .py-4 {
     grid-column: 2/3;
-    grid-row: 6/7;
+    grid-row: 5/6;
+}
+
+.form-control {
+    margin-left: 10px;
+}
+
+.navButton {
+    margin-right: 10px;
 }
 
