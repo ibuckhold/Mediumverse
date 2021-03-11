@@ -101,6 +101,7 @@
         display: block;
     }
     .create-story-form {
-        width: ;
+        width: auto;
+        /* Not DONE */
     }
 }

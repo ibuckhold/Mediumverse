@@ -1,0 +1,25 @@
+.login-form {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 25% 25% 25% 25%;
+    align-items: center;
+    justify-items: center;
+    min-height: 300px;
+}
+
+.email-login {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.password-login {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+.py-4 {
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+
+
