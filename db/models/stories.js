@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     categoryId: DataTypes.INTEGER,
     imageURL: DataTypes.TEXT
   }, {});
-  Story.associate = function(models) {
+  Story.associate = function (models) {
     Story.belongsTo(models.Category, {
       foreignKey: "categoryId"
     });
@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "id"
     });
     Story.hasMany(models.Comment, {
-      foreignKey: "storyId"
+      foreignKey: "storyId",
+      onDelete: "CASCADE",
+      hooks: true
     });
   };
   return Story;
