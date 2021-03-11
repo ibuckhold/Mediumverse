@@ -2,48 +2,64 @@ extends layout.pug
 
 include utils.pug
 
-block content
+block head
+  title() Mediumverse
+  link(rel='stylesheet' href='/stylesheets/index.css')
+  link(rel='stylesheet' href='/stylesheets/display-story.css')
+
+block content 
     +validationErrorSummary(errors)
-    h1 #{story.title}
-    h2 #{story.Category.name}
-    h3 Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
-    img(src=story.imageURL)
-    div #{story.text}
+    div(id='story-page')
+        div(id='title-container')
+            div(id='story-title') #{story.title}
+            div(id='story-category') #{story.Category.name}
+            h3 Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
+        div(id='story-picture')
+            img(src=story.imageURL)
+        div(id='story-text') #{story.text}
 
-    if locals.authenticated && user.id === story.userId
-        form(action=`/stories/edit/${story.id}`)
-            button(type='submit') Edit Story
-        form(action=`/stories/delete/${story.id}` method='post')
-            button(type='submit') Delete Story
-        div
-            span(id="likes") #{storyLikes} people liked this!
-            button(type="click" id="likeButton" data-story-id=story.id) Like!
+        div(id='user-features')
+            div(id='user-comments')
+                button(id='show-comments') Comments
+            
+            if locals.authenticated && user.id === story.userId
+            div(id='modify-story')
+                div(id='story-edit')
+                    form(action=`/stories/edit/${story.id}`)
+                        button(type='submit') Edit Story
+                div(id='story-delete')
+                    form(action=`/stories/delete/${story.id}` method='post')
+                        button(type='submit') Delete Story
+                div
+                    span(id="likes") #{storyLikes} people liked this!
+                    button(type="click" id="likeButton" data-story-id=story.id) Like!
 
-    if locals.authenticated
-        form(action=`/comments/create/${story.id}` method="post")
-            input(type='hidden', name='_csrf', value=csrfToken)
-            +field(null, "text", null, "textarea", 'Enter comment text')
-            button(type="submit") Create Comment
-        //- div
-        //-     span #{storyLikes} people liked this!
-        //- button(type="click" id="likeButton") Like!
+    div(id='comment-section' hidden)
+        div(id='close-comments')
+            div(id='close-comments-button-div')
+                button(id='close-comments-button') X
+        if locals.authenticated
+            form(action=`/comments/create/${story.id}` method="post" id='create-comment-form')
+                input(type='hidden', name='_csrf', value=csrfToken)
+                +field(null, "text", null, "textarea", 'Enter comment text')
+                button(type="submit" id='submit-comment-button') Add Comment
 
-
-    //- Comments List
-    each comment in storyComments
-        div
-            span #{comment.User.username}:
-            span #{comment.text}
-            div Created on: #{comment.createdAt.toLocaleDateString("en-US")}
-            //- Edit Button
-            if locals.authenticated && user.id === comment.userId
-                input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit Comment")
-                form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` hidden)
-                    input(type='hidden', name='_csrf', value=csrfToken)
-                    +field(null, "text", null, "textarea", 'Enter comment text to edit')
-                    button(type="submit") Edit Comment
-                form(action=`/comments/delete/${comment.id}` method='post')
-                    button(type='submit') Delete Comment
+        each comment in storyComments 
+            div(id='user-comments' data-comment-id=comment.id)
+                span #{comment.User.username}
+                div Posted: #{comment.createdAt.toLocaleDateString("en-US")}
+                div(id='comment-body')
+                    pre=comment.text
+                div(id='comment-buttons-div')
+                    if locals.authenticated && user.id === comment.userId
+                        input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
+                        form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` class='edit-form' hidden)
+                            input(type='hidden', name='_csrf', value=csrfToken)
+                            +field(null, "text", null, "textarea", 'Edit comment...')
+                            button(type="submit" class='comment-div-buttons') Confirm
+                            input(type="button" name="delete-comment" id=`${comment.id}` value="Delete" class='comment-div-buttons ')
+                        //- form(action=`/comments/delete/${comment.id}` method='post' id=`delete-comment-form-${comment.id}` hidden)
+                        //-     button(type='submit' class='comment-div-buttons') Delete
 
     script(src="/javascripts/edit-story.js" type="module")
     script(src="/javascripts/display-story.js" type="module")

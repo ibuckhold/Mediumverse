@@ -15,11 +15,11 @@ html
       div(class="navRight")
         if locals.authenticated
           //- span Welcome #{user.username}!
-          div
+          div(id='create-story-div')
             a(class="far fa-plus-square createStoryIcon" href="/stories/create")
           form(action='/user/logout' method='post')
             button(type='submit' class="navButton" id="logout") LOG OUT
-          div
+          div(id='profile-icon-div')
             a(class="fas fa-mask profile-icon" href=`/${user.id}`)
 
         else

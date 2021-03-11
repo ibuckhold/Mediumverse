@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const {Op} = require("sequelize");
+const { Op } = require("sequelize");
 
 const { User, Story, Category, Comment, Like } = require("../db/models");
 const { check, validationResult } = require('express-validator');
@@ -121,7 +121,9 @@ router.get("/edit/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
 
     const story = await Story.findByPk(storyId);
-    
+
+
+
     return res.render('edit-story', {
         title: 'Edit Story',
         story,
@@ -220,7 +222,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
         ]]
     });
 
-    let storyLikes = await Like.count({where: {storyId}});
+    let storyLikes = await Like.count({ where: { storyId } });
 
     return res.render("display-story", {
         storyLikes,
@@ -235,18 +237,20 @@ router.patch("/:id(\\d+)", async (req, res) => {
     const storyId = req.params.id;
     const userId = req.session.auth.userId;
 
-    let foundLike = await Like.findOne({where: {
-        [Op.and]: [ {storyId}, {userId} ]
-    }});
+    let foundLike = await Like.findOne({
+        where: {
+            [Op.and]: [{ storyId }, { userId }]
+        }
+    });
 
-    if(foundLike){
+    if (foundLike) {
         const dislike = await Like.findByPk(foundLike.id);
         await dislike.destroy();
-    }else {
-        await Like.create({storyId, userId});
+    } else {
+        await Like.create({ storyId, userId });
     }
 
-    let storyLikes = await Like.count({where: {storyId}});
+    let storyLikes = await Like.count({ where: { storyId } });
     res.json({ likes: storyLikes });
 });
 
