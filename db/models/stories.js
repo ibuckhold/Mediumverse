@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       hooks: true
     });
+    Story.hasMany(models.Like, {foreignKey: "storyId"});
   };
   return Story;
 };
