@@ -19,7 +19,7 @@ block content
     if locals.authenticated
         form(action=`/comments/create/${story.id}` method="post")
             input(type='hidden', name='_csrf', value=csrfToken)
-            +field("Add a Comment", "text", null, "textarea")
+            +field(null, "text", null, "textarea", 'Enter comment text')
             button(type="submit") Create Comment
 
     //- Comments List
@@ -27,13 +27,15 @@ block content
         div 
             span #{comment.User.username}: 
             span #{comment.text} 
-            div Created on: #{comment.updatedAt.toLocaleDateString("en-US")}
+            div Created on: #{comment.createdAt.toLocaleDateString("en-US")}
             //- Edit Button
             if locals.authenticated && user.id === comment.userId
-                input(type="button" name="show-edit" id="show-edit" value="Edit Comment")
-                form(action=`/comments/edit/${comment.id}` method="post" id="edit-comment-form" hidden)
+                input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit Comment")
+                form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` hidden)
                     input(type='hidden', name='_csrf', value=csrfToken)
-                    +field(null, "text", null, "textarea")
+                    +field(null, "text", null, "textarea", 'Enter comment text to edit')
                     button(type="submit") Edit Comment
+                form(action=`/comments/delete/${comment.id}` method='post')
+                    button(type='submit') Delete Comment
 
     script(src="/javascripts/edit-story.js" type="module")
