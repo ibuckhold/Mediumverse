@@ -16,21 +16,26 @@
 #story-title{
     display: flex;
     justify-content: center;
-    font-size: 6rem;
+    font-size: 5rem;
     padding-top: 20px;
+    padding-bottom: 20px;
     width: auto;
-    align-items: center;;
+    max-width: 60vw;
+    align-items: center;
+    text-align: center;
 }
 
 #story-category{
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 #story-picture{
-    width: 80%;
-    height: 1000px;
+    max-width: 60vw;
+    max-height: 1000px;
+    height: auto;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,13 +44,17 @@
 
 #story-picture img{
     max-width: 100%;
-    max-height: 100%;
+    max-height: 1000px;
+    height: auto;
+    width: auto;
+    display: block;
 }
 
 #story-text{
     width: 60vw;
     font-size: 24px;
     white-space: pre-wrap;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #user-features{
@@ -59,9 +68,19 @@
 
 #modify-story{
     display: flex;
-    width: 30%;
-    height: 4vh;
+    width: 40%;
+    height: auto;
     justify-content: flex-end;
+    padding: 10px;
+    border-top: 2px solid lightgrey;
+}
+
+#user-comments{
+    height: auto;
+    border-top: 2px solid lightgrey;
+    width: 60%;
+    font-size: 14px;
+    padding: 10px;
 }
 
 #story-edit button{
@@ -128,6 +147,7 @@
 }
 textarea{
     resize: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 textarea:focus{
@@ -136,6 +156,7 @@ textarea:focus{
 
 #submit-comment-button{
     margin-bottom: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .edit-form{
@@ -158,7 +179,7 @@ textarea:focus{
     border-left: 2px solid black;
 }
 
-span{
+#two{
     font-size: 20px;
 }
 
@@ -166,16 +187,14 @@ span{
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#one{
+    font-size: 16px;
 }
 
-#user-comments{
-    height: auto;
-    border-top: 2px solid lightgrey;
-    width: 90%;
-    font-size: 14px;
-    padding: 10px;
-}
+
 
 #comment-buttons-div{
     display: flex;
