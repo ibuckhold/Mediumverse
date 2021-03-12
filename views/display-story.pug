@@ -34,7 +34,7 @@ block content
 
             else if locals.authenticated && user.id !== story.userId
                     div
-                        span(id="likes") #{storyLikes} people liked this!
+                        span(id="likes") #{storyLikes} people like this!
                         button(type="click" id="likeButton" data-story-id=story.id) Like!
             //- ^^^^ Liking Stories ^^^^
 
@@ -50,15 +50,15 @@ block content
                 button(type="submit" id='submit-comment-button') Add Comment
 
         each comment in storyComments
-            div(id='user-comments' data-comment-id=comment.id)
+            div(data-comment-id=comment.id id=`${comment.id}`)
                 span(id='two') #{comment.User.username}
                 div Posted: #{comment.createdAt.toLocaleDateString("en-US")}
                 div(id='comment-body')
                     span(id='one') #{comment.text}
                 div(id='comment-buttons-div')
                     if locals.authenticated && user.id !== comment.userId
-                        span(id="commentLikes") #{commentLikes} people liked this!
-                        button(type="click" class="commentlikeButton" data-comment-id=comment.id data-story-id=story.id) Like!
+                        span(id=`likes-${comment.id}`) #{comment.Likes.length} people like this!
+                        button(type="click" class=`commentlikeButton` data-comment-id=comment.id data-story-id=story.id) Like!
                     if locals.authenticated && user.id === comment.userId
                         input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
                         form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` class='edit-form' hidden)
@@ -70,5 +70,5 @@ block content
                         //-     button(type='submit' class='comment-div-buttons') Delete
 
     script(src="/javascripts/edit-story.js" type="module")
-    script(src="/javascripts/display-story.js" type="module")
     script(src="/javascripts/display-comments.js" type="module")
+    script(src="/javascripts/display-story.js" type="module")
