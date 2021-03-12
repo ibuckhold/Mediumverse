@@ -82,7 +82,7 @@
     padding-left: 10px;
 }
 
-.user-comment{
+#user-comments{
     height: auto;
     border-top: 2px solid lightgrey;
     width: 90%;
@@ -103,6 +103,10 @@
 
 #user-post{
     margin-bottom: -2%;
+}
+
+#all-comments{
+    width: 90%;
 }
 
 #story-delete button {
