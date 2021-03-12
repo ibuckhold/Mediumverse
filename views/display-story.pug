@@ -8,7 +8,7 @@ block head
   link(rel='stylesheet' href='/stylesheets/display-story.css')
   script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
 
-block content 
+block content
     +validationErrorSummary(errors)
     div(id='story-page')
         div(id='title-container')
@@ -22,19 +22,23 @@ block content
         div(id='user-features')
             div(id='user-comments')
                 button(id='show-comments') Comments
-            
-            if locals.authenticated && user.id === story.userId
-            div(id='modify-story')
-                div(id='story-edit')
-                    form(action=`/stories/edit/${story.id}`)
-                        button(type='submit') Edit Story
-                div(id='story-delete')
-                    form(action=`/stories/delete/${story.id}` method='post')
-                        button(type='submit') Delete Story
-                div
-                    span(id="likes") #{storyLikes} people liked this!
-                    button(type="click" id="likeButton" data-story-id=story.id) Like!
 
+            if locals.authenticated && user.id === story.userId
+                div(id='modify-story')
+                    div(id='story-edit')
+                        form(action=`/stories/edit/${story.id}`)
+                            button(type='submit') Edit Story
+                    div(id='story-delete')
+                        form(action=`/stories/delete/${story.id}` method='post')
+                            button(type='submit') Delete Story
+
+            else if locals.authenticated && user.id !== story.userId
+                    div
+                        span(id="likes") #{storyLikes} people liked this!
+                        button(type="click" id="likeButton" data-story-id=story.id) Like!
+            //- ^^^^ Liking Stories ^^^^
+
+            //- vvvvvv Liking Comments vvvvv
     div(id='comment-section' hidden)
         div(id='close-comments')
             div(id='close-comments-button-div')
@@ -45,13 +49,15 @@ block content
                 +field(null, "text", null, "textarea", 'Enter comment text')
                 button(type="submit" id='submit-comment-button') Add Comment
 
-        each comment in storyComments 
+        each comment in storyComments
             div(id='user-comments' data-comment-id=comment.id)
                 span(id='two') #{comment.User.username}
                 div Posted: #{comment.createdAt.toLocaleDateString("en-US")}
                 div(id='comment-body')
                     span(id='one') #{comment.text}
                 div(id='comment-buttons-div')
+                    span(id="commentLikes") #{commentLikes} people liked this!
+                    button(type="click" class="commentlikeButton" data-comment-id=comment.id data-story-id=story.id) Like!
                     if locals.authenticated && user.id === comment.userId
                         input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
                         form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` class='edit-form' hidden)
@@ -64,3 +70,4 @@ block content
 
     script(src="/javascripts/edit-story.js" type="module")
     script(src="/javascripts/display-story.js" type="module")
+    script(src="/javascripts/display-comments.js" type="module")
