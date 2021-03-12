@@ -3,9 +3,11 @@ extends layout.pug
 include utils.pug
 
 block head
-  title() Mediumverse
+  title Mediumverse
   link(rel='stylesheet' href='/stylesheets/index.css')
   link(rel='stylesheet' href='/stylesheets/user-signup.css')
+  link(rel="preconnect" href="https://fonts.gstatic.com")
+  link(href="https://fonts.googleapis.com/css2?family=Marvel:wght@700&display=swap" rel="stylesheet")
 
 block content
   +validationErrorSummary(errors)

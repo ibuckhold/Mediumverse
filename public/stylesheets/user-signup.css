@@ -6,12 +6,10 @@
 /* Styling for the body block. */
 .blocking-content {
     height: 90em;
-    /* background-color: rgb(36, 36, 36); */
 }
 
 /* Styling for the div containing all signup content */
 #signup-block {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,23 +23,29 @@
 
     background-color: rgb(223, 223, 223);
     border-radius: 20px;
+
+    font-family: 'Marvel', sans-serif;
+    font-size: 20px;
 }
 
 /* Styping for signup title */
 #signup-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Marvel', sans-serif;
     font-size: 30px;
     padding-top: 10px;
 }
 
+/* Styling for signup form */
 .signup-form {
     display: grid;
     grid-template-columns: 100px 1fr 100px;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
+
     min-height: 300px;
-    font-family: 'Montserrat', sans-serif;
+
+    font-family: 'Marvel', sans-serif;
 }
 
 .username-signup {

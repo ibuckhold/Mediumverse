@@ -6,12 +6,10 @@
 /* Styling for the body block. */
 .blocking-content {
     height: 90em;
-    /* background-color: rgb(36, 36, 36); */
 }
 
 /* Styling for the div containing all login content */
 #login-block {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,21 +17,23 @@
 
     width: 30%;
     height: auto;
-    /* margin-top: 100px; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* margin-top: 100px; */
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 20px; */
+    /* margin: auto; */
     padding-top: 10px;
     padding-bottom: 10px;
 
     background-color: rgb(223, 223, 223);
     border-radius: 20px;
+
+    font-family: 'Marvel', sans-serif;
+    font-size: 20px;
 }
 
 /* Styping for Login title */
 #login-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Marvel', sans-serif;
     font-size: 30px;
     padding-top: 10px;
 }
@@ -45,14 +45,16 @@
     grid-template-rows: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
+
     min-height: 200px;
-    font-family: 'Montserrat', sans-serif;
+
+    font-family: 'Marvel', sans-serif;
+    font-size: 20px;
 }
 
 .email-login {
     grid-column: 2/3;
     grid-row: 1/2;
-    /* border: 1px solid green; */
 }
 
 .password-login {
@@ -83,14 +85,6 @@
 
     margin-top: 20px;
 }
-
-/* #email {
-    margin-left: 10px;
-}
-
-#password {
-    margin-left: 10px;
-} */
 
 /* @media screen and (min-width: 750) {
     .login-block {

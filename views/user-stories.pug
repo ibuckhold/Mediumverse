@@ -1,16 +1,24 @@
 extends layout.pug 
 
+block head
+  title Mediumverse
+  link(rel='stylesheet' href='/stylesheets/index.css')
+  link(rel='stylesheet' href='/stylesheets/user-stories.css')
+  link(rel="preconnect" href="https://fonts.gstatic.com")
+  link(href="https://fonts.googleapis.com/css2?family=Marvel:wght@700&family=Open+Sans&display=swap" rel="stylesheet")
+
 block content
-    each story in userStories
-        div 
-            p Published on: #{story.updatedAt.toLocaleDateString("en-US")}
-            a(href=`/stories/${story.id}`) #{story.title}
-            div
-                img(src=story.imageURL)
-            p #{story.text.substring(0, 50) + "..."}
-        if locals.authenticated && user.id === story.userId
-            div 
-                form(action=`/stories/edit/${story.id}`)
-                    button(type='submit') Edit Story
-                form(action=`/stories/delete/${story.id}` method='post')
-                    button(type='submit') Delete Story
+    div(id="story-preview-container")
+        each story in userStories
+            div(class="story-preview")
+                a(href=`/stories/${story.id}` class="story-title") #{story.title}
+                p(class="created-info") Published on: #{story.createdAt.toLocaleDateString("en-US")}
+                div
+                    img(src=story.imageURL)
+                p #{story.text.length > 200 ? story.text.substring(0, 200) + "..." : story.text}
+                if locals.authenticated && user.id === story.userId
+                    div 
+                        form(action=`/stories/edit/${story.id}`)
+                            button(type='submit') Edit Story
+                        form(action=`/stories/delete/${story.id}` method='post')
+                            button(type='submit') Delete Story
