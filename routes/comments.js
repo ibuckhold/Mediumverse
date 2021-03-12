@@ -125,4 +125,33 @@ router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
     // return res.redirect(`/stories/${storyId}`);
 }));
 
+router.patch("/create/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
+    console.log("-------------- inside patch")
+    const commentId = req.params.id;
+    const comment = await Comment.findByPk(commentId);
+    const storyId = comment.storyId
+    const userId = req.session.auth.userId;
+
+    let foundLike = await Like.findOne({
+        where: {
+            [Op.and]: [{ commentId }, { userId }] /// if necessary also check for storyId
+        }
+    });
+
+    if (foundLike) {
+        const dislike = await Like.findByPk(foundLike.id);
+        await dislike.destroy();
+    } else {
+        await Like.create({ storyId, commentId, userId });
+    }
+
+    let commentLikes = await Like.count({
+        where: {
+            [Op.and]: [ { commentId }, { storyId } ]
+        }
+    })
+    res.json({ likes: commentLikes });
+
+}))
+
 module.exports = router;
