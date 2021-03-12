@@ -13,7 +13,10 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
   const userId = parseInt(req.params.id, 10);
   const user = await User.findByPk(userId);
 
-  const userStories = await Story.findAll({ where: { userId } });
+  const userStories = await Story.findAll({ 
+    where: { userId },
+    order: [["createdAt", "DESC"]]
+  });
   res.render("user-stories", {
     title: `${user.username}'s Stories`,
     userStories
