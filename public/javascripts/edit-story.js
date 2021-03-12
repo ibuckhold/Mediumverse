@@ -1,10 +1,19 @@
 
 const showEditButtons = document.querySelectorAll('[id^="show-edit"]');
-
+const commentForm = document.querySelector('#create-comment-form')
 const showCommentsButton = document.getElementById('show-comments')
 const closeCommentsButton = document.getElementById('close-comments');
 const deleteCommentButtons = document.querySelectorAll('input[name=delete-comment]')
 const deleteHideButton = document.getElementById('[id^="show-delete"]')
+
+// console.log(commentForm)
+commentForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(commentForm)
+    console.log('user---', user)
+    // console.log('target', e.target)
+
+})
 
 showEditButtons.forEach(showEditButton => {
     showEditButton.addEventListener("click", event => {

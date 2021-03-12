@@ -101,6 +101,10 @@
     height: 4vh;
 }
 
+#user-post{
+    margin-bottom: -2%;
+}
+
 #story-delete button {
     color:whitesmoke;
     background-color:rgb(31, 31, 255);
