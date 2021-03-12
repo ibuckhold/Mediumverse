@@ -1,17 +1,49 @@
-
 const showEditButtons = document.querySelectorAll('[id^="show-edit"]');
 const commentForm = document.querySelector('#create-comment-form')
 const showCommentsButton = document.getElementById('show-comments')
 const closeCommentsButton = document.getElementById('close-comments');
 const deleteCommentButtons = document.querySelectorAll('input[name=delete-comment]')
 const deleteHideButton = document.getElementById('[id^="show-delete"]')
+const submitCommentButton = document.getElementById('submit-comment-button')
+const csrfToken = document.getElementsByName('_csrf')
 
 // console.log(commentForm)
-commentForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(commentForm)
-    console.log('user---', user)
-    // console.log('target', e.target)
+// commentForm.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+//     const formData = new FormData(commentForm)
+//     console.log('user---', user)
+//     console.log('target', e.target)
+
+// })
+
+submitCommentButton.addEventListener('click', async (e) => {
+    const addCommentText = document.getElementById('add-text')
+    const commentSection = document.getElementById('comment-section')
+    const storyId = commentSection.dataset.storyId
+    console.log(csrfToken[0].value)
+
+    try {
+        const body = {
+            _csrf: csrfToken[0].value,
+            text: addCommentText.value,
+        }
+        const res = await fetch(`/comments/create/${storyId}`, {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+                'Content-type': 'application/json',
+            }
+        });
+        console.log(res)
+        if (!res.ok) {
+            throw res;
+        }
+
+        // ele.remove()
+    } catch (err) {
+        console.error(err)
+    }
+
 
 })
 
@@ -54,9 +86,11 @@ deleteCommentButtons.forEach((deleteCommentButton) => {
                     'Content-type': 'application/json',
                 }
             });
+
             if (!res.ok) {
                 throw res;
             }
+
 
             // const data = await res.json()
             // console.log(data)

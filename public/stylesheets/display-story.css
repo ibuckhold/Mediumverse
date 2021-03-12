@@ -82,7 +82,7 @@
     padding-left: 10px;
 }
 
-#user-comments{
+.user-comment{
     height: auto;
     border-top: 2px solid lightgrey;
     width: 90%;

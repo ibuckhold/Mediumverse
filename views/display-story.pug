@@ -40,18 +40,17 @@ block content
             //- ^^^^ Liking Stories ^^^^
 
             //- vvvvvv Liking Comments vvvvv
-    div(id='comment-section' style='visibility: hidden')
+    div(id='comment-section' style='visibility: hidden' data-story-id=story.id)
         div(id='close-comments')
             div(id='close-comments-button-div')
                 button(id='close-comments-button') X
         if locals.authenticated
-            form(action=`/comments/create/${story.id}` method="post" id='create-comment-form')
-                input(type='hidden', name='_csrf', value=csrfToken)
-                +field(null, "text", null, "textarea", 'Enter comment text')
-                button(type="submit" id='submit-comment-button') Add Comment
-
+            input(type='hidden', name='_csrf', value=csrfToken)
+            +field(null, "add-text", null, "textarea", 'Enter comment text')
+            button(type="submit" id='submit-comment-button') Add Comment
+        div(id='all-comments')
         each comment in storyComments
-            div(id='user-comments' data-comment-id=comment.id)
+            div(class='user-comment' data-comment-id=comment.id)
                 span(id='two') #{comment.User.username}
                 div Posted: #{comment.createdAt.toLocaleDateString("en-US")}
                 div(id='comment-body')
@@ -64,7 +63,7 @@ block content
                         input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
                         form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` class='edit-form' hidden)
                             input(type='hidden', name='_csrf', value=csrfToken)
-                            +field(null, "text", null, "textarea", 'Edit comment...')
+                            +field(null, "edit-text", null, "textarea", 'Edit comment...')
                             button(type="submit" class='comment-div-buttons') Confirm
                             input(type="button" name="delete-comment" id=`${comment.id}` value="Delete" class='comment-div-buttons ')
                         //- form(action=`/comments/delete/${comment.id}` method='post' id=`delete-comment-form-${comment.id}` hidden)
