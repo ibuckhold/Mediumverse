@@ -1,7 +1,7 @@
 const express = require('express');
 const { Op } = require("sequelize");
 
-const { User, Story, Category, Comment, Like } = require("../db/models");
+const { User, Story, Category, Comment, Like, Follow } = require("../db/models");
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('../utils');
 
@@ -10,36 +10,27 @@ const router = express.Router();
 
 // router.patch(`/:id(\\d+)`)
 router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId;
-    const otherUser = parseInt(req.params.id, 10);
+    const followerId = req.session.auth.userId;
+    const userId = parseInt(req.params.id, 10);
+    let isFollowing = false;
 
-    const foundFriend = User.findByPk(otherUser, {
-        include: {
-            model: Follow,
-            include: User
+    const foundFriend = await Follow.findOne({
+        where: {
+            [Op.and]: [{ followerId }, { userId }]
         }
-
     })
+    
+    if(foundFriend) {
+        await foundFriend.destroy();
+    } else {
+        await Follow.create({
+            userId,
+            followerId,
+        });
+        isFollowing = true
+    }
     console.log(foundFriend)
-
-
-    // const storyId = req.params.id;
-    // const userId = req.session.auth.userId;
-
-    // let foundLike = await Like.findOne({
-    //     where: {
-    //         [Op.and]: [{ storyId }, { userId }]
-    //     }
-    // });
-    // if (foundLike) {
-    //     const dislike = await Like.findByPk(foundLike.id);
-    //     await dislike.destroy();
-    // } else {
-    //     await Like.create({ storyId, userId });
-    // }
-
-    // let storyLikes = await Like.count({ where: { storyId } });
-    // res.json({ likes: storyLikes });
+    res.json({ isFollowing })
 }))
 
 module.exports = router
