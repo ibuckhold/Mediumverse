@@ -233,7 +233,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
 }));
 
 
-router.patch("/:id(\\d+)", async (req, res) => {
+router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
     const storyId = req.params.id;
     const userId = req.session.auth.userId;
 
@@ -252,6 +252,6 @@ router.patch("/:id(\\d+)", async (req, res) => {
 
     let storyLikes = await Like.count({ where: { storyId } });
     res.json({ likes: storyLikes });
-});
+}));
 
 module.exports = router;
