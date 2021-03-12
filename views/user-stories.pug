@@ -6,6 +6,7 @@ block head
   link(rel='stylesheet' href='/stylesheets/user-stories.css')
   link(rel="preconnect" href="https://fonts.gstatic.com")
   link(href="https://fonts.googleapis.com/css2?family=Marvel:wght@700&family=Open+Sans&display=swap" rel="stylesheet")
+  script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
 
 block content
     div(id="story-preview-container")
@@ -13,12 +14,11 @@ block content
             div(class="story-preview")
                 a(href=`/stories/${story.id}` class="story-title") #{story.title}
                 p(class="created-info") Published on: #{story.createdAt.toLocaleDateString("en-US")}
-                div
-                    img(src=story.imageURL)
+                img(class="story-preview-image" src=story.imageURL)
                 p #{story.text.length > 200 ? story.text.substring(0, 200) + "..." : story.text}
                 if locals.authenticated && user.id === story.userId
-                    div 
+                    div(class="story-preview-buttons") 
                         form(action=`/stories/edit/${story.id}`)
-                            button(type='submit') Edit Story
+                            button(type='submit') Edit
                         form(action=`/stories/delete/${story.id}` method='post')
-                            button(type='submit') Delete Story
+                            button(type='submit') Delete

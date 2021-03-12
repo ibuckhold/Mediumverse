@@ -30,6 +30,15 @@ router.post("/create/:id(\\d+)", commentValidators, csrfProtection, asyncHandler
 
         if (validatorErrors.isEmpty()) {
             await newComment.save();
+
+            const creator = await User.findByPk(userId);
+
+            return res.json({
+                commentId: newComment.id,
+                commentText: newComment.text,
+                username: creator.username,
+                createdDate: newComment.createdAt.toLocaleDateString("en-US")
+            });
             return res.redirect(`/stories/${storyId}`);
         } else {
             const errors = validatorErrors.array().map((err) => err.msg);

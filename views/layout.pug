@@ -1,6 +1,8 @@
 doctype html
 html
   head
+      link(rel="preconnect" href="https://fonts.gstatic.com")
+      link(href="https://fonts.googleapis.com/css2?family=Marvel:wght@700&family=Open+Sans&display=swap" rel="stylesheet")
       block head
         title Mediumverse
         link(rel='stylesheet' href='/stylesheets/index.css')
@@ -12,12 +14,12 @@ html
 
       div(class="navRight")
         if locals.authenticated
-          //- span Welcome #{user.username}!
-          div(id='create-story-div')
+          span(id="welcome-message" class="nav-right-element") Welcome, #{user.username}!
+          div(id='create-story-div' class="nav-right-element")
             a(class="far fa-plus-square createStoryIcon" href="/stories/create")
-          form(action='/user/logout' method='post')
+          form(action='/user/logout' method='post' class="nav-right-element")
             button(type='submit' class="navButton" id="logout") LOG OUT
-          div(id='profile-icon-div')
+          div(id='profile-icon-div' class="nav-right-element")
             a(class="fas fa-mask profile-icon" href=`/${user.id}`)
 
         else

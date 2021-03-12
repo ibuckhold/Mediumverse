@@ -1,7 +1,8 @@
-extends layout
+extends layout.pug
 
 append head
   //- add page specific styles by appending to the head
+  //- title Mediumverse
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylesheet" href="/stylesheets/homepage.css")
   //- add page specific js
@@ -15,7 +16,7 @@ block content
     div(class= "welcomeBlock")
       div(class="blockText")
         h2 Welcome to Mediumverse!
-        p Time's have changed, but the stories only get better!
+        p Times have changed, but the stories only get better!
         p Explore unique perspectives from beings all over the
         p multiverse and learn what they have to tell about a
         p wide range of topics. Get started today!

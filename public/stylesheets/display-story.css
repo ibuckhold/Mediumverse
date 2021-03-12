@@ -82,7 +82,7 @@
     padding-left: 10px;
 }
 
-#user-comments{
+.user-comments{
     height: auto;
     border-top: 2px solid lightgrey;
     width: 90%;
@@ -195,11 +195,13 @@ textarea:focus{
     border-left: 2px solid black;
 }
 
-#two{
+/* Styling for comment's author. */
+.comment-creator {
     font-size: 20px;
 }
 
-#comment-body{
+/* Styling for comment's body text. */
+.comment-body{
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;
@@ -211,8 +213,8 @@ textarea:focus{
 }
 
 
-
-#comment-buttons-div{
+/* Styling for container for comment buttons. */
+.comment-buttons-div{
     display: flex;
 }
 
