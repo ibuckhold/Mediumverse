@@ -20,7 +20,7 @@ block content
         div(id='story-text') #{story.text}
 
         div(id='user-features')
-            div(id='user-comments')
+            div(id='user-comments-div')
                 button(id='show-comments') Comments
 
             if locals.authenticated && user.id === story.userId
@@ -39,7 +39,7 @@ block content
             //- ^^^^ Liking Stories ^^^^
 
             //- vvvvvv Liking Comments vvvvv
-    div(id='comment-section' hidden)
+    div(id='comment-section' style='visibility: hidden')
         div(id='close-comments')
             div(id='close-comments-button-div')
                 button(id='close-comments-button') X
@@ -56,8 +56,9 @@ block content
                 div(id='comment-body')
                     span(id='one') #{comment.text}
                 div(id='comment-buttons-div')
-                    span(id="commentLikes") #{commentLikes} people liked this!
-                    button(type="click" class="commentlikeButton" data-comment-id=comment.id data-story-id=story.id) Like!
+                    if locals.authenticated && user.id !== comment.userId
+                        span(id="commentLikes") #{commentLikes} people liked this!
+                        button(type="click" class="commentlikeButton" data-comment-id=comment.id data-story-id=story.id) Like!
                     if locals.authenticated && user.id === comment.userId
                         input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
                         form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` class='edit-form' hidden)
