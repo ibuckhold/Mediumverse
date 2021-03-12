@@ -1,0 +1,32 @@
+.welcomeBlock {
+    background-color: #ff748ec0;
+    width: auto;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.blockText {
+    padding-left: 100px;
+}
+
+h2 {
+    padding-top: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 45px;
+    padding-bottom: 10px;
+    color: rgb(108, 106, 106);
+}
+
+div.blockText > p {
+    color: rgba(108, 106, 106, 0.788);
+    font-size: 18px;
+}
+
+.image {
+    align-self: center;
+    width: auto;
+    height: 70%;
+    padding-right: 100px;
+    background-color: unset;
+}

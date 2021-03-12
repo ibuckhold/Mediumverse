@@ -1,20 +1,38 @@
-extends layout.pug 
+extends layout.pug
 
-include utils.pug 
+include utils.pug
+
+block head
+    title Mediumverse
+    link(rel='stylesheet' href='/stylesheets/create-story.css')
+    link(rel='stylesheet' href='/stylesheets/index.css')
+    script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
+    //- script(src="/javascripts/create-story.js" type="module")
 
 block content
     +validationErrorSummary(errors)
-    form(action=`/stories/edit/${story.id}` method='post' enctype='multipart/form-data')
+    form(action=`/stories/edit/${story.id}` method='post' class='create-story-form' enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=csrfToken)
-        +field('Title', 'title', story.title)
-        label Category
-        select(name='categoryId')
-            each category in categories     
-                option(value=category.id, selected=category.id===story.categoryId) #{category.name}
-        +field('Text', 'text', story.text, 'textarea')
-        div 
-            input(type='file', name='imageupload')
-        div
-            button(type='submit') Update Story
-    form(action=`/stories/delete/${story.id}` method='post')
-        button(type="submit") Delete Story
+        div(class='createStory-button' id='one')
+            button(type='submit' class="navButton") Update Story
+        div(class="categoryDiv")
+            input(type="hidden" value=1 class="categoryInput" name="categoryId")
+            each category in categories
+                div(data-category-id=category.id class="categoryBox")
+                    span(class=`categoryOption ${category.id === 1 ? "userSelected":""}` ) #{category.name}
+                        img(src="")
+        div(class="titleDiv")
+            +field('', 'title', story.title, "", "Title...", "textPlaceholder titleText")
+        //- label Category
+        //- select(name='categoryId')
+        //-     each category in categories
+        //-         option(value=category.id, selected=category.id===story.categoryId) #{category.name}
+        div(class="textDiv")
+            +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
+        div(class="editImageUpload")
+            //- a(class="far fa-images navButton")
+            input(type='file' id="actual-btn" name='imageupload')
+        div(class='createStory-button' id='two')
+            button(type='submit' class="navButton") Update Story
+        form(action=`/stories/delete/${story.id}` method='post')
+            button(type="submit" class="navButton" class="delete-button") Delete Story
