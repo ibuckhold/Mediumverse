@@ -94,6 +94,9 @@ function createCommentElement(commentId, commentText, username, createdDate, csr
     deleteSubmit.setAttribute("name", "delete-comment");
     deleteSubmit.setAttribute("id", commentId);
     deleteSubmit.setAttribute("value", "Delete");
+    deleteSubmit.addEventListener("click", event => {
+        deleteCommentsCb(commentId);
+    });
      
     // Top-level comment.
     commentElement.appendChild(creator);
@@ -200,29 +203,29 @@ closeCommentsButton.addEventListener('click', event => {
     commentForm.style.visibility = 'hidden';
 });
 
+const deleteCommentsCb = async (commentId) => {
+    const ele = document.querySelector(`[data-comment-id="${commentId}"]`)
+    // console.log(ele);
+    try {
+        const res = await fetch(`/comments/delete/${commentId}`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            }
+        });
+
+        if (!res.ok) {
+            throw res;
+        }
+        ele.remove()
+    } catch (err) {
+        console.error(err)
+    }
+};
+
 deleteCommentButtons.forEach((deleteCommentButton) => {
     deleteCommentButton.addEventListener('click', async (event) => {
         const commentId = event.target.id;
-        const ele = document.querySelector(`[data-comment-id="${commentId}"]`)
-        // console.log(ele);
-        try {
-            const res = await fetch(`/comments/delete/${commentId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                }
-            });
-
-            if (!res.ok) {
-                throw res;
-            }
-
-
-            // const data = await res.json()
-            // console.log(data)
-            ele.remove()
-        } catch (err) {
-            console.error(err)
-        }
-    })
-})
+        deleteCommentsCb(commentId);
+    });
+});

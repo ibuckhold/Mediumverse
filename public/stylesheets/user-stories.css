@@ -48,7 +48,7 @@
     color: black;
 }
 
-.story-title:active {
+.story-title:link {
     color: black;
 }
 
