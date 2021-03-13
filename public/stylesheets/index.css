@@ -31,7 +31,7 @@ body {
     align-items: right;
     align-items: center;
     padding-right: 100px;
-    width: 230px;
+    /* width: 230px; */
     justify-content: space-between;
 }
 
@@ -55,6 +55,7 @@ body {
     font-size: medium;
     padding: 10px 20px;
     border: 3px solid rgb(31, 31, 255);
+    height: 40px;
 }
 
 .profile-icon {
@@ -81,4 +82,18 @@ body {
     /* font-family: 'Roboto', sans-serif; */
     font-size: 40px;
     /* color: whitesmoke; */
+}
+
+/* Styling for welcome message. */
+#welcome-message {
+    color: rgb(31, 31, 255);
+    font-family: "Marvel", sans-serif;
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+/* Styling for the elements in the nav-right header group. */
+.nav-right-element {
+    margin-left: 5px;
+    margin-right: 5px;
 }

@@ -3,7 +3,7 @@ extends layout.pug
 include utils.pug
 
 block head
-    title() Mediumverse
+    title Mediumverse
     link(rel='stylesheet' href='/stylesheets/create-story.css')
     link(rel='stylesheet' href='/stylesheets/index.css')
     script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
@@ -26,7 +26,7 @@ block content
         div(class="textDiv")
             +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
         div(class="imageUpload")
-            a(class="far fa-images navButton")
+            //- a(class="far fa-images navButton")
             input(type="file" id="actual-btn" name='imageupload')
 
         div(class='createStory-button' id='two')

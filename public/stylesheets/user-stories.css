@@ -3,8 +3,11 @@
     font-family: "Marvel", sans-serif;
     font-size: 60px;
     /* margin: auto; */
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    padding-left: 30px;
+    padding-top: 5px;
+    /* border: 1px solid red; */
 }
 
 /* Container for story previews. */
@@ -35,9 +38,18 @@
     border-bottom: 1px solid grey;
 }
 
-/* Styling for story title. */
+/* Stylings for story title. */
 .story-title {
     font-size: 30px;
+    text-decoration: none;
+}
+
+.story-title:visited {
+    color: black;
+}
+
+.story-title:link {
+    color: black;
 }
 
 /* Styling for story created info. */
@@ -45,14 +57,26 @@
     font-size: 15px;
 }
 
-#followDiv {
-    /* height: 20px;
-    width: 20px; */
-    /* border: 2px solid red; */
+/* Styling for story preview image. */
+.story-preview-image {
+    max-width: 70%;
 }
 
-#followButton {
+/* Styling for the story preview buttons' container. */
+.story-preview-buttons {
+    display: flex;
+    /* border: 1px solid red; */
+}
 
+/* Styling for the buttons inside the button container. */
+.story-preview-buttons form button {
+    border: none;
+    background: none;
+
+    margin-right: 10px;
+    
+    color: blue;
+    font-size: 18px;
 }
 
 .following {

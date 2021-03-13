@@ -14,13 +14,14 @@ block content
         div(id='title-container')
             div(id='story-title') #{story.title}
             div(id='story-category') #{story.Category.name}
+            h3(id='user-post') #{user.username}
             h3 Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
         div(id='story-picture')
             img(src=story.imageURL)
         div(id='story-text') #{story.text}
 
         div(id='user-features')
-            div(id='user-comments')
+            div(id='user-comments-div')
                 button(id='show-comments') Comments
 
             if locals.authenticated && user.id === story.userId
@@ -39,33 +40,38 @@ block content
             //- ^^^^ Liking Stories ^^^^
 
             //- vvvvvv Liking Comments vvvvv
-    div(id='comment-section' hidden)
+    div(id='comment-section' style='visibility: hidden' data-story-id=story.id)
         div(id='close-comments')
             div(id='close-comments-button-div')
                 button(id='close-comments-button') X
         if locals.authenticated
-            form(action=`/comments/create/${story.id}` method="post" id='create-comment-form')
-                input(type='hidden', name='_csrf', value=csrfToken)
-                +field(null, "text", null, "textarea", 'Enter comment text')
-                button(type="submit" id='submit-comment-button') Add Comment
+            input(type='hidden', name='_csrf', value=csrfToken)
+            +field(null, "add-text", null, "textarea", 'Enter comment text')
+            button(type="submit" id='submit-comment-button') Add Comment
 
-        each comment in storyComments
-            div(data-comment-id=comment.id id=`${comment.id}`)
-                span(id='two') #{comment.User.username}
-                div Posted: #{comment.createdAt.toLocaleDateString("en-US")}
-                div(id='comment-body')
-                    span(id='one') #{comment.text}
-                div(id='comment-buttons-div')
-                    if locals.authenticated && user.id !== comment.userId
-                        span(id=`likes-${comment.id}`) #{comment.Likes.length} people like this!
-                        button(type="click" class=`commentlikeButton` data-comment-id=comment.id data-story-id=story.id) Like!
-                    if locals.authenticated && user.id === comment.userId
-                        input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
-                        form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` class='edit-form' hidden)
-                            input(type='hidden', name='_csrf', value=csrfToken)
-                            +field(null, "text", null, "textarea", 'Edit comment...')
-                            button(type="submit" class='comment-div-buttons') Confirm
-                            input(type="button" name="delete-comment" id=`${comment.id}` value="Delete" class='comment-div-buttons ')
+        div(id='all-comments')
+            each comment in storyComments
+                div(class='user-comments' data-comment-id=comment.id)
+                    span(id='two' class='comment-creator') #{comment.User.username}
+                    div(class='posted-time') Posted: #{comment.createdAt.toLocaleDateString("en-US")}
+                    div(id='comment-body' class='comment-body')
+                        span(id='one' class='comment-text') #{comment.text}
+                    div(id='comment-buttons-div' class='comment-buttons-div')
+                        if locals.authenticated && user.id !== comment.userId
+                            span(id=`likes-${comment.id}`) #{comment.Likes.length} people like this!
+                            button(type="click" class=`commentlikeButton` data-comment-id=comment.id data-story-id=story.id) Like!
+                        if locals.authenticated && user.id === comment.userId
+                            //- Button to show edit/delete prompts.
+                            input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
+                            form(action=`/comments/edit/${comment.id}` method="post" id=`edit-comment-form-${comment.id}` class='edit-form' hidden)
+                                input(type='hidden', name='_csrf', value=csrfToken)
+                                //- +field(null, "edit-text", null, "textarea", 'Edit comment...')
+                                div(class='form-group')
+                                    textarea(name="text" class=`form-control` rows='5' placeholder="Edit Comment...")
+                                button(type="submit" class='comment-div-buttons') Confirm
+                                input(type="button" name="delete-comment" id=`${comment.id}` value="Delete" class='comment-div-buttons ')
+                        //- form(action=`/comments/delete/${comment.id}` method='post' id=`delete-comment-form-${comment.id}` hidden)
+                        //-     button(type='submit' class='comment-div-buttons') Delete
                         
 
     script(src="/javascripts/edit-story.js" type="module")

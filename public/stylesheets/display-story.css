@@ -75,7 +75,14 @@
     border-top: 2px solid lightgrey;
 }
 
-#user-comments{
+#user-comments-div{
+    width: 60%;
+    border-top: 2px solid lightgrey;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.user-comments{
     height: auto;
     border-top: 2px solid lightgrey;
     width: 90%;
@@ -90,7 +97,16 @@
     border-radius: 5px;
     font-size: medium;
     padding: 10px 20px;
-    height: 100%;
+    margin-right: 5px;
+    height: 4vh;
+}
+
+#user-post{
+    margin-bottom: -2%;
+}
+
+#all-comments{
+    width: 90%;
 }
 
 #story-delete button {
@@ -100,7 +116,7 @@
     border-radius: 5px;
     font-size: medium;
     padding: 10px 20px;
-    height: 100%;
+    height: 4vh;
 }
 
 #show-comments{
@@ -179,11 +195,13 @@ textarea:focus{
     border-left: 2px solid black;
 }
 
-#two{
+/* Styling for comment's author. */
+.comment-creator {
     font-size: 20px;
 }
 
-#comment-body{
+/* Styling for comment's body text. */
+.comment-body{
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;
@@ -195,8 +213,8 @@ textarea:focus{
 }
 
 
-
-#comment-buttons-div{
+/* Styling for container for comment buttons. */
+.comment-buttons-div{
     display: flex;
 }
 

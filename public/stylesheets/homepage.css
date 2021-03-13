@@ -1,5 +1,5 @@
 .welcomeBlock {
-    background-color: #ff748ec0;
+    background-color: #fa7676c0;
     width: auto;
     height: 400px;
     display: flex;
@@ -30,3 +30,4 @@ div.blockText > p {
     padding-right: 100px;
     background-color: unset;
 }
+
