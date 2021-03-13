@@ -92,7 +92,6 @@ router.post('/create', upload, csrfProtection, storyValidators, asyncHandler(asy
 
         const validatorErrors = validationResult(req);
         if (validatorErrors.isEmpty()) {
-            // console.log(story)
             await story.save();
             return res.redirect(`/stories/${story.id}`);
         } else {

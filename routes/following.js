@@ -19,7 +19,7 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
             [Op.and]: [{ followerId }, { userId }]
         }
     })
-    
+
     if(foundFriend) {
         await foundFriend.destroy();
     } else {
@@ -29,7 +29,6 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
         });
         isFollowing = true
     }
-    console.log(foundFriend)
     res.json({ isFollowing })
 }))
 

@@ -19,7 +19,6 @@ showEditButtons.forEach(showEditButton => {
 
 showCommentsButton.addEventListener('click', event => {
     const commentForm = document.getElementById('comment-section')
-    console.log('show comments')
     if (commentForm.style.visibility === 'hidden') {
         commentForm.style.visibility = 'visible';
     } else {
@@ -29,7 +28,6 @@ showCommentsButton.addEventListener('click', event => {
 
 closeCommentsButton.addEventListener('click', event => {
     const commentForm = document.getElementById('comment-section')
-    console.log('exit comment')
     commentForm.style.visibility = 'hidden';
 })
 
@@ -37,7 +35,6 @@ deleteCommentButtons.forEach((deleteCommentButton) => {
     deleteCommentButton.addEventListener('click', async (event) => {
         const commentId = event.target.id
         const ele = document.querySelector(`[data-comment-id="${commentId}"]`)
-        console.log(ele)
         try {
             const res = await fetch(`/comments/delete/${commentId}`, {
                 method: 'POST',

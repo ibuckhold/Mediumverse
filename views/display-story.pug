@@ -66,8 +66,7 @@ block content
                             +field(null, "text", null, "textarea", 'Edit comment...')
                             button(type="submit" class='comment-div-buttons') Confirm
                             input(type="button" name="delete-comment" id=`${comment.id}` value="Delete" class='comment-div-buttons ')
-                        //- form(action=`/comments/delete/${comment.id}` method='post' id=`delete-comment-form-${comment.id}` hidden)
-                        //-     button(type='submit' class='comment-div-buttons') Delete
+                        
 
     script(src="/javascripts/edit-story.js" type="module")
     script(src="/javascripts/display-comments.js" type="module")
