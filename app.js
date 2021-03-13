@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const storiesRouter = require('./routes/stories');
 const commentsRouter = require("./routes/comments");
+const followRouter = require("./routes/following")
 
 const { sequelize } = require('./db/models');
 const { restoreUser } = require('./auth');
@@ -45,6 +46,7 @@ app.use(indexRouter);
 app.use("/user", usersRouter);
 app.use("/stories", storiesRouter);
 app.use("/comments", commentsRouter);
+app.use("/following", followRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

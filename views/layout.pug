@@ -12,7 +12,6 @@ html
 
       div(class="navRight")
         if locals.authenticated
-          //- span Welcome #{user.username}!
           div(id='create-story-div')
             a(class="far fa-plus-square createStoryIcon" href="/stories/create")
           form(action='/user/logout' method='post')

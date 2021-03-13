@@ -92,7 +92,6 @@ router.post('/create', upload, csrfProtection, storyValidators, asyncHandler(asy
 
         const validatorErrors = validationResult(req);
         if (validatorErrors.isEmpty()) {
-            // console.log(story)
             await story.save();
             return res.redirect(`/stories/${story.id}`);
         } else {
@@ -215,12 +214,23 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
     const storyComments = await Comment.findAll({
         include: [{
             model: User
+        },
+        {
+            model: Like //maybe take out
         }],
         where: { storyId },
         order: [[
             'createdAt', 'DESC'
         ]]
     });
+
+    // const commentId = parseInt(req.params.id, 10);
+
+    // let commentLikes = await Like.count({
+    //     where: {
+    //         [Op.and]: [ { commentId }, { storyId } ]
+    //     }
+    // })
 
     let storyLikes = await Like.count({ where: { storyId } });
 
@@ -230,6 +240,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
         storyComments,
         csrfToken: req.csrfToken()
     });
+    // res.json({ storyComments })
 }));
 
 
@@ -242,7 +253,6 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
             [Op.and]: [{ storyId }, { userId }]
         }
     });
-
     if (foundLike) {
         const dislike = await Like.findByPk(foundLike.id);
         await dislike.destroy();
