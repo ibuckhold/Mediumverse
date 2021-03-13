@@ -77,8 +77,7 @@ function createCommentElement(commentId, commentText, username, createdDate, csr
     // textarea(id=fieldName name=fieldName class=`form-control ${classes}` rows='5' placeholder=placeholder)= fieldValue
     const editCommentTextArea = document.createElement("textarea");
     editCommentTextArea.classList.add("form-control")
-    editCommentTextArea.setAttribute("id", "edit-text");
-    editCommentTextArea.setAttribute("name", "edit-text");
+    editCommentTextArea.setAttribute("name", "text");
     editCommentTextArea.setAttribute("rows", "5");
     editCommentTextArea.setAttribute("placeholder", "Edit comment...");
 
