@@ -13,6 +13,7 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
     const followerId = req.session.auth.userId;
     const userId = parseInt(req.params.id, 10);
     let isFollowing = false;
+    // let isFollowing;
 
     const foundFriend = await Follow.findOne({
         where: {
@@ -22,14 +23,36 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
 
     if(foundFriend) {
         await foundFriend.destroy();
+        // isFollowing = false;
     } else {
         await Follow.create({
             userId,
             followerId,
         });
-        isFollowing = true
+        isFollowing = true;
     }
     res.json({ isFollowing })
+}))
+
+router.get("/:id(\\d+)", asyncHandler(async (req,res) => {
+    const followerId = req.session.auth.userId;
+    const userId = parseInt(req.params.id, 10);
+    // let isFollowing = false;
+    let isFollowing;
+
+    const foundFriend = await Follow.findOne({
+        where: {
+            [Op.and]: [{ followerId }, { userId }]
+        }
+    })
+
+    if(foundFriend) {
+        isFollowing = true
+        // isFollowing = false;
+    } else {
+        isFollowing = false;
+    }
+    res.json({ isFollowing });
 }))
 
 module.exports = router
