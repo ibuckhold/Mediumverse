@@ -1,14 +1,17 @@
-extends layout.pug 
+extends layout.pug
 
 block head
   title Mediumverse
   link(rel='stylesheet' href='/stylesheets/index.css')
   link(rel='stylesheet' href='/stylesheets/user-stories.css')
+  script(type="module" src="/javascripts/follows.js")
   link(rel="preconnect" href="https://fonts.gstatic.com")
   link(href="https://fonts.googleapis.com/css2?family=Marvel:wght@700&family=Open+Sans&display=swap" rel="stylesheet")
   script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
 
 block content
+    div(id='followDiv')
+        button(class="navButton" id="followButton" type="click" data-other-user-id=otherUser) Follow
     div(id="story-preview-container")
         each story in userStories
             div(class="story-preview")

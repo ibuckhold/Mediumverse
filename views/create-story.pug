@@ -21,10 +21,6 @@ block content
                 div(data-category-id=category.id class="categoryBox")
                     span(class=`categoryOption ${category.id === 1 ? "userSelected":""}` ) #{category.name}
                         img(src="")
-            //- select(name='categoryId' class="dropdown")
-            //-     option(class="categoryOption") Choose a category
-            //-     each category in categories
-            //-         option(value=category.id class="categoryOption") #{category.name}
         div(class="titleDiv")
             +field('', 'title', story.title, "", "Title...", "textPlaceholder titleText")
         div(class="textDiv")

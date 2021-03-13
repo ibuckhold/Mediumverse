@@ -19,7 +19,7 @@
     margin-left: auto;
     margin-right: auto;
     /* margin-top: 30px; */
-    
+
     /* border: 1px solid red; */
 }
 
@@ -77,4 +77,10 @@
     
     color: blue;
     font-size: 18px;
+}
+
+.following {
+    background-color: rgb(31, 31, 255);
+    color: white;
+    font-weight: bold;
 }

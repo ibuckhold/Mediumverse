@@ -1,8 +1,10 @@
 const express = require('express');
 
-const { User, Story, Category, Comment } = require("../db/models");
+const { User, Story, Category, Comment, Like } = require("../db/models");
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('../utils');
+const { Op } = require("sequelize");
+
 
 const router = express.Router();
 
@@ -106,14 +108,22 @@ router.post("/edit/:id(\\d+)", commentValidators, csrfProtection, asyncHandler(a
             });
 
             const storyComments = await Comment.findAll({
-                include: {
+                include: [{
                     model: User
-                },
+                },{
+                    model: Like
+                }],
                 where: { storyId },
                 order: [[
                     'createdAt', 'DESC'
                 ]]
             });
+
+            // let commentLikes = await Like.count({
+            //     where: {
+            //         [Op.and]: [ { commentId }, { storyId } ]
+            //     }
+            // })
 
             return res.render("display-story", {
                 story,
@@ -134,16 +144,16 @@ router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
     // return res.redirect(`/stories/${storyId}`);
 }));
 
-router.patch("/create/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
-    console.log("-------------- inside patch")
+// router.patch("/create/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
+router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
     const commentId = req.params.id;
     const comment = await Comment.findByPk(commentId);
-    const storyId = comment.storyId
+    // const storyId = comment.storyId;
     const userId = req.session.auth.userId;
-
     let foundLike = await Like.findOne({
         where: {
             [Op.and]: [{ commentId }, { userId }] /// if necessary also check for storyId
+            // commentId, userId
         }
     });
 
@@ -151,16 +161,18 @@ router.patch("/create/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) 
         const dislike = await Like.findByPk(foundLike.id);
         await dislike.destroy();
     } else {
-        await Like.create({ storyId, commentId, userId });
+        await Like.create({ commentId, userId });
     }
 
     let commentLikes = await Like.count({
         where: {
-            [Op.and]: [ { commentId }, { storyId } ]
+            commentId
         }
     })
     res.json({ likes: commentLikes });
 
 }))
+
+
 
 module.exports = router;

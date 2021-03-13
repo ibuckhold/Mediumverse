@@ -19,6 +19,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
     order: [["createdAt", "DESC"]]
   });
   res.render("user-stories", {
+    otherUser: userId,
     title: `${user.username}'s Stories`,
     userStories
   });

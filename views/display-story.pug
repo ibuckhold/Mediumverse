@@ -35,7 +35,7 @@ block content
 
             else if locals.authenticated && user.id !== story.userId
                     div
-                        span(id="likes") #{storyLikes} people liked this!
+                        span(id="likes") #{storyLikes} people like this!
                         button(type="click" id="likeButton" data-story-id=story.id) Like!
             //- ^^^^ Liking Stories ^^^^
 
@@ -58,8 +58,8 @@ block content
                         span(id='one' class='comment-text') #{comment.text}
                     div(id='comment-buttons-div' class='comment-buttons-div')
                         if locals.authenticated && user.id !== comment.userId
-                            span(class='comment-likes') #{commentLikes} people liked this!
-                            button(type="click" class="commentlikeButton" data-comment-id=comment.id data-story-id=story.id) Like!
+                            span(id=`likes-${comment.id}`) #{comment.Likes.length} people like this!
+                            button(type="click" class=`commentlikeButton` data-comment-id=comment.id data-story-id=story.id) Like!
                         if locals.authenticated && user.id === comment.userId
                             //- Button to show edit/delete prompts.
                             input(type="button" name="show-edit" id=`show-edit-${comment.id}` value="Edit" class='comment-div-buttons')
@@ -72,7 +72,8 @@ block content
                                 input(type="button" name="delete-comment" id=`${comment.id}` value="Delete" class='comment-div-buttons ')
                         //- form(action=`/comments/delete/${comment.id}` method='post' id=`delete-comment-form-${comment.id}` hidden)
                         //-     button(type='submit' class='comment-div-buttons') Delete
+                        
 
     script(src="/javascripts/edit-story.js" type="module")
-    script(src="/javascripts/display-story.js" type="module")
     script(src="/javascripts/display-comments.js" type="module")
+    script(src="/javascripts/display-story.js" type="module")

@@ -23,10 +23,7 @@ block content
                         img(src="")
         div(class="titleDiv")
             +field('', 'title', story.title, "", "Title...", "textPlaceholder titleText")
-        //- label Category
-        //- select(name='categoryId')
-        //-     each category in categories
-        //-         option(value=category.id, selected=category.id===story.categoryId) #{category.name}
+
         div(class="textDiv")
             +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
         div(class="editImageUpload")
