@@ -84,3 +84,13 @@
     color: white;
     font-weight: bold;
 }
+
+#title-header{
+    display: flex;
+    justify-content: center;
+}
+
+#followDiv {
+    display: flex;
+    justify-content: center;
+}
