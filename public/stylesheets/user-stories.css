@@ -74,7 +74,7 @@
     background: none;
 
     margin-right: 10px;
-    
+
     color: blue;
     font-size: 18px;
 }
@@ -83,4 +83,33 @@
     background-color: rgb(31, 31, 255);
     color: white;
     font-weight: bold;
+}
+
+#followButton {
+    margin-left: 100px;
+}
+
+.otherUserImg {
+    width: 50px;
+    height: auto;
+}
+
+#title {
+    margin-left: 100px;
+}
+
+.following-Container {
+    padding-left: 100px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+.otherUserLabel {
+    font-weight: bold;
+    font-style: italic;
+}
+
+h2 {
+    padding-left: 670px;
 }

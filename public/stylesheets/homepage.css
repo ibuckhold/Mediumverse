@@ -31,3 +31,33 @@ div.blockText > p {
     background-color: unset;
 }
 
+.otherUserImg {
+    width: 50px;
+    height: auto;
+}
+
+.restOfBody {
+    display: flex;
+}
+
+.follows {
+    padding-top: 10px;
+    margin-left: 10px;
+    width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    border-left: rgba(0, 0, 0, 0.459) solid 1px;
+}
+
+.labels > h2{
+    display: inline;
+    padding-left: 100px;
+}
+
+.labels {
+    display: flex;
+}
+
+#peopleYoureFollowing {
+    padding-left: 350px;
+}
