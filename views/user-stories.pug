@@ -12,6 +12,13 @@ block head
 block content
     div(id='followDiv')
         button(class="navButton" id="followButton" type="click" data-other-user-id=otherUser) Follow
+    h2 People You're Following
+    div(class="following-Container")
+        each person in sendPeople
+            div(class="userFollowing" href=`/${person.dataValues.id}`)
+                a(href=`/${person.dataValues.id}`)
+                    img(src="/images/avengers logo.png" class="otherUserImg")
+                    p(class="otherUserLabel") #{person.dataValues.username}
     div(id="story-preview-container")
         each story in userStories
             div(class="story-preview")
@@ -20,7 +27,7 @@ block content
                 img(class="story-preview-image" src=story.imageURL)
                 p #{story.text.length > 200 ? story.text.substring(0, 200) + "..." : story.text}
                 if locals.authenticated && user.id === story.userId
-                    div(class="story-preview-buttons") 
+                    div(class="story-preview-buttons")
                         form(action=`/stories/edit/${story.id}`)
                             button(type='submit') Edit
                         form(action=`/stories/delete/${story.id}` method='post')

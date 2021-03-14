@@ -21,3 +21,25 @@ block content
         p multiverse and learn what they have to tell about a
         p wide range of topics. Get started today!
       img(src="/images/marvel3.png" class="image")
+
+    div(class="labels")
+      h2 Latest Stories
+      if locals.authenticated
+        h2(id="peopleYoureFollowing") People You're Following
+
+    div(class="restOfBody")
+      div(class="latestStoriesList")
+        each story in stories
+          div(class="story")
+            a(href=`/${story.userId}`)
+            h1 #{story.title}
+            div(id='story-picture')
+              img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
+
+      div(class="follows")
+        if locals.authenticated
+          each person in sendPeople
+            div(class="userFollowing" href=`/${person.dataValues.id}`)
+              a(href=`/${person.dataValues.id}`)
+                img(src="/images/avengers logo.png" class="otherUserImg")
+                p(class="otherUserLabel") #{person.dataValues.username}

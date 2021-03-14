@@ -48,7 +48,7 @@ body {
 
     /* Transparent */
     background-color:rgb(31, 31, 255, 0);
-    
+
     /* background-color: black; */
     /* border: black solid 1px; */
     border-radius: 5px;
@@ -96,4 +96,13 @@ body {
 .nav-right-element {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.latestStoriesList {
+    padding-left: 100px;
+    width: 600px;
+}
+
+.story {
+    border-bottom: solid rgba(0, 0, 0, 0.527) 1px;
 }

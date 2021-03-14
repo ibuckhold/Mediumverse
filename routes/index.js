@@ -1,13 +1,34 @@
 var express = require('express');
 const { csrfProtection, asyncHandler } = require('../utils');
-const { User, Story, Category } = require("../db/models");
+const { User, Story, Follow } = require("../db/models");
+const { Op } = require("sequelize");
 
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   // console.log("TEST---------")
-  res.render('index');
+  const stories = await Story.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 5
+  });
+
+  console.log(stories);
+  let userId
+  let peopleYoureFollowing;
+  let sendPeople;
+  if (req.session.auth){
+    userId = req.session.auth.userId;
+    peopleYoureFollowing = await User.findAll({
+      include: {
+        model: User,
+        as: "otherPeople"
+      },
+      where: {id: userId}
+    });
+    sendPeople = peopleYoureFollowing[0].dataValues.otherPeople;
+  }
+  res.render('index', {stories, sendPeople});
 });
 
 router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
@@ -18,7 +39,20 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
     where: { userId },
     order: [["createdAt", "DESC"]]
   });
+
+  const peopleYoureFollowing = await User.findAll({
+      include: {
+        model: User,
+        as: "otherPeople"
+      },
+      where: {id: userId}
+  })
+
+  // console.log(peopleYoureFollowing[0].dataValues.otherPeople);
+  const sendPeople = peopleYoureFollowing[0].dataValues.otherPeople;
+
   res.render("user-stories", {
+    sendPeople,
     otherUser: userId,
     title: `${user.username}'s Stories`,
     userStories
