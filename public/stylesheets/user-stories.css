@@ -74,7 +74,7 @@
     background: none;
 
     margin-right: 10px;
-    
+
     color: blue;
     font-size: 18px;
 }
@@ -94,3 +94,42 @@
     display: flex;
     justify-content: center;
 }
+
+.otherUserImg {
+    width: 50px;
+    height: auto;
+    justify-content: center;
+}
+
+#title {
+    margin-left: 100px;
+}
+
+.following-Container {
+    display: flex;
+
+    justify-content: center;
+}
+
+.otherUserLabel {
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 4px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.userFollowing {
+    justify-content: center;
+    padding: 10px;
+    display: flex;
+    
+}
+
+.userFollowing a{
+    display: flex;
+    justify-content: center;
+}
+
