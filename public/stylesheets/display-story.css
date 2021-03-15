@@ -107,6 +107,17 @@
 
 #all-comments{
     width: 90%;
+    overflow: scroll;
+}
+
+#add-text {
+    width: 90%;
+}
+
+.form-group{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
 }
 
 #story-delete button {
@@ -176,10 +187,12 @@ textarea:focus{
 }
 
 .edit-form{
-    width: 90%;
-
+    width: 100%;
 }
 
+.form-control{
+    width: 100%;
+}
 #comment-section{
     width: 30%;
     z-index: 1;

@@ -85,13 +85,20 @@
     font-weight: bold;
 }
 
-#followButton {
-    margin-left: 100px;
+#title-header{
+    display: flex;
+    justify-content: center;
+}
+
+#followDiv {
+    display: flex;
+    justify-content: center;
 }
 
 .otherUserImg {
     width: 50px;
     height: auto;
+    justify-content: center;
 }
 
 #title {
@@ -99,17 +106,30 @@
 }
 
 .following-Container {
-    padding-left: 100px;
     display: flex;
-    flex-flow: row;
-    justify-content: space-around;
+
+    justify-content: center;
 }
 
 .otherUserLabel {
     font-weight: bold;
     font-style: italic;
+    padding-left: 4px;
 }
 
 h2 {
-    padding-left: 670px;
+    text-align: center;
 }
+
+.userFollowing {
+    justify-content: center;
+    padding: 10px;
+    display: flex;
+    
+}
+
+.userFollowing a{
+    display: flex;
+    justify-content: center;
+}
+
