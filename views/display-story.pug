@@ -15,7 +15,8 @@ block content
             div(id='story-title') #{story.title}
             div(id='story-category') #{story.Category.name}
             div(id='user-info')
-                div(id='user-post') #{user.username}
+                a(href=`/${story.User.id}` class="author")
+                  div(id='user-post') #{story.User.username}
                 div Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
         div(id='story-picture')
             img(src=story.imageURL)
@@ -73,7 +74,7 @@ block content
                                 input(type="button" name="delete-comment" id=`${comment.id}` value="Delete" class='comment-div-buttons ')
                         //- form(action=`/comments/delete/${comment.id}` method='post' id=`delete-comment-form-${comment.id}` hidden)
                         //-     button(type='submit' class='comment-div-buttons') Delete
-                        
+
 
     script(src="/javascripts/edit-story.js" type="module")
     script(src="/javascripts/display-comments.js" type="module")

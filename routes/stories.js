@@ -138,11 +138,6 @@ router.post("/edit/:id(\\d+)", upload, csrfProtection, storyValidators, asyncHan
         const story = await Story.findByPk(storyId);
 
         const userId = req.session.auth.userId;
-        // If logged in user is not the user who created story
-        // Ask Chris
-        // if (userId !== story.userId) {
-        //     return res.redirect("/");
-        // }
         const {
             title,
             categoryId,
@@ -202,9 +197,7 @@ router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
 router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
     const story = await Story.findOne({
-        include: {
-            model: Category
-        },
+        include: [{model: Category}, {model: User}],
         where: {
             id: storyId
         }
@@ -216,21 +209,13 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
             model: User
         },
         {
-            model: Like //maybe take out
+            model: Like
         }],
         where: { storyId },
         order: [[
             'createdAt', 'DESC'
         ]]
     });
-
-    // const commentId = parseInt(req.params.id, 10);
-
-    // let commentLikes = await Like.count({
-    //     where: {
-    //         [Op.and]: [ { commentId }, { storyId } ]
-    //     }
-    // })
 
     let storyLikes = await Like.count({ where: { storyId } });
 
@@ -240,7 +225,6 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
         storyComments,
         csrfToken: req.csrfToken()
     });
-    // res.json({ storyComments })
 }));
 
 
@@ -253,6 +237,8 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
             [Op.and]: [{ storyId }, { userId }]
         }
     });
+
+    // if user liked this story, unlike it (destroy like)
     if (foundLike) {
         const dislike = await Like.findByPk(foundLike.id);
         await dislike.destroy();
