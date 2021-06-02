@@ -236,3 +236,7 @@ textarea:focus{
     border-style: none;
     color: blue;
 }
+
+.author {
+    text-decoration: none;
+}

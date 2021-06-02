@@ -14,7 +14,8 @@ block content
         div(id='title-container')
             div(id='story-title') #{story.title}
             div(id='story-category') #{story.Category.name}
-            h3(id='user-post') #{user.username}
+            a(href=`/${story.User.id}` class="author")
+                h3(id='user-post') #{story.User.username}
             h3 Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
         div(id='story-picture')
             img(src=story.imageURL)

@@ -202,9 +202,7 @@ router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
 router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
     const story = await Story.findOne({
-        include: {
-            model: Category
-        },
+        include: [{model: Category}, {model: User}],
         where: {
             id: storyId
         }
@@ -216,7 +214,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
             model: User
         },
         {
-            model: Like //maybe take out
+            model: Like
         }],
         where: { storyId },
         order: [[
