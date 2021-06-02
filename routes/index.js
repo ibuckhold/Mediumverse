@@ -13,7 +13,7 @@ router.get('/', async function(req, res, next) {
     limit: 5
   });
 
-  console.log(stories);
+  // console.log(stories);
   let userId
   let peopleYoureFollowing;
   let sendPeople;
