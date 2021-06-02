@@ -141,14 +141,11 @@ router.post("/delete/:id(\\d+)", asyncHandler(async (req, res) => {
     const storyId = comment.storyId
     const removeComment = await comment.destroy();
     res.json(removeComment)
-    // return res.redirect(`/stories/${storyId}`);
 }));
 
-// router.patch("/create/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
 router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
     const commentId = req.params.id;
     const comment = await Comment.findByPk(commentId);
-    // const storyId = comment.storyId;
     const userId = req.session.auth.userId;
     let foundLike = await Like.findOne({
         where: {
@@ -157,6 +154,7 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
         }
     });
 
+    // if user already liked this comment, unlike it (destroy it)
     if (foundLike) {
         const dislike = await Like.findByPk(foundLike.id);
         await dislike.destroy();
