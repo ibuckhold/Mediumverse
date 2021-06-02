@@ -22,14 +22,9 @@ block content
 				p wide range of topics. Get started today!
 			img(src="/images/marvel3.png" class="image")
 
-		div(class="labels")
-			h2 Latest Stories
-			if locals.authenticated
-				h2(id="peopleYoureFollowing") People You're Following
-
 		div(class="restOfBody")
 			div(class="latestStoriesList")
-
+				h2 Latest Stories
 				each story in stories
 					div(class="story" href=`/stories/${story.id}`)
 						a(href=`/stories/${story.id}`)
@@ -39,6 +34,7 @@ block content
 
 			div(class="follows")
 				if locals.authenticated
+					h2(id="peopleYoureFollowing") People You're Following
 					each person in sendPeople
 						div(class="userFollowing" href=`/${person.dataValues.id}`)
 							a(href=`/${person.dataValues.id}`)
