@@ -61,6 +61,7 @@ div.blockText > p {
     flex-direction: row;
     margin: 8px 0px;
     border-bottom: solid rgba(0, 0, 0, 0.527) 1px;
+    text-decoration: none;
 }
 
 .story:hover {

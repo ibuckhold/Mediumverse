@@ -10,10 +10,9 @@ router.get('/', async function(req, res, next) {
   // console.log("TEST---------")
   const stories = await Story.findAll({
     order: [["createdAt", "DESC"]],
-    limit: 5
+    limit: 10
   });
 
-  console.log(stories);
   let userId
   let peopleYoureFollowing;
   let sendPeople;
