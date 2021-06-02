@@ -1,19 +1,16 @@
 const express = require('express');
 const { Op } = require("sequelize");
 
-const { User, Story, Category, Comment, Like, Follow } = require("../db/models");
-const { check, validationResult } = require('express-validator');
+const { Follow } = require("../db/models");
 const { csrfProtection, asyncHandler } = require('../utils');
 
 const router = express.Router();
 
 
-// router.patch(`/:id(\\d+)`)
 router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
     const followerId = req.session.auth.userId;
     const userId = parseInt(req.params.id, 10);
     let isFollowing = false;
-    // let isFollowing;
 
     const foundFriend = await Follow.findOne({
         where: {
@@ -23,7 +20,6 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
 
     if(foundFriend) {
         await foundFriend.destroy();
-        // isFollowing = false;
     } else {
         await Follow.create({
             userId,
@@ -37,7 +33,6 @@ router.patch("/:id(\\d+)", asyncHandler(async (req, res) => {
 router.get("/:id(\\d+)", asyncHandler(async (req,res) => {
     const followerId = req.session.auth.userId;
     const userId = parseInt(req.params.id, 10);
-    // let isFollowing = false;
     let isFollowing;
 
     const foundFriend = await Follow.findOne({
@@ -48,7 +43,6 @@ router.get("/:id(\\d+)", asyncHandler(async (req,res) => {
 
     if(foundFriend) {
         isFollowing = true
-        // isFollowing = false;
     } else {
         isFollowing = false;
     }
