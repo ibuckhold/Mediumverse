@@ -1,45 +1,45 @@
 extends layout.pug
 
 append head
-  //- add page specific styles by appending to the head
-  //- title Mediumverse
-  link(rel="stylesheet" href="/stylesheets/index.css")
-  link(rel="stylesheet" href="/stylesheets/homepage.css")
-  //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
+	//- add page specific styles by appending to the head
+	//- title Mediumverse
+	link(rel="stylesheet" href="/stylesheets/index.css")
+	link(rel="stylesheet" href="/stylesheets/homepage.css")
+	//- add page specific js
+	script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  //- h1= title
-  //- p Welcome to your Project Skeleton
-      //- NEW STUFF
-  body(class="body")
-    div(class= "welcomeBlock")
-      div(class="blockText")
-        h2 Welcome to Mediumverse!
-        p Times have changed, but the stories only get better!
-        p Explore unique perspectives from beings all over the
-        p multiverse and learn what they have to tell about a
-        p wide range of topics. Get started today!
-      img(src="/images/marvel3.png" class="image")
+	//- h1= title
+	//- p Welcome to your Project Skeleton
+	//- NEW STUFF
+	body(class="body")
+		div(class= "welcomeBlock")
+			div(class="blockText")
+				h2 Welcome to Mediumverse!
+				p Times have changed, but the stories only get better!
+				p Explore unique perspectives from beings all over the
+				p multiverse and learn what they have to tell about a
+				p wide range of topics. Get started today!
+			img(src="/images/marvel3.png" class="image")
 
-    div(class="labels")
-      h2 Latest Stories
-      if locals.authenticated
-        h2(id="peopleYoureFollowing") People You're Following
+		div(class="labels")
+			h2 Latest Stories
+			if locals.authenticated
+				h2(id="peopleYoureFollowing") People You're Following
 
-    div(class="restOfBody")
-      div(class="latestStoriesList")
-        each story in stories
-          div(class="story")
-            a(href=`/${story.userId}`)
-            h1 #{story.title}
-            div(id='story-picture')
-              img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
+		div(class="restOfBody")
+			div(class="latestStoriesList")
+				each story in stories
+					div(class="story" href=`/stories/${story.id}`)
+						a(href=`/stories/${story.id}`)
+							h1 #{story.title}
+							div(id='story-picture')
+								img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
 
-      div(class="follows")
-        if locals.authenticated
-          each person in sendPeople
-            div(class="userFollowing" href=`/${person.dataValues.id}`)
-              a(href=`/${person.dataValues.id}`)
-                img(src="/images/avengers logo.png" class="otherUserImg")
-                p(class="otherUserLabel") #{person.dataValues.username}
+			div(class="follows")
+				if locals.authenticated
+					each person in sendPeople
+						div(class="userFollowing" href=`/${person.dataValues.id}`)
+							a(href=`/${person.dataValues.id}`)
+								img(src="/images/avengers logo.png" class="otherUserImg")
+								p(class="otherUserLabel") #{person.dataValues.username}
