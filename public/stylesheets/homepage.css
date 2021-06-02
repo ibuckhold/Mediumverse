@@ -60,6 +60,22 @@ div.blockText > p {
     display: flex;
 }
 
+.latestStoriesList {
+    margin-left: 100px;
+    width: 600px;
+}
+
+.story > * {
+    display: flex;
+    flex-direction: row;
+    margin: 8px 0px;
+    border-bottom: solid rgba(0, 0, 0, 0.527) 1px;
+}
+
+#story-picture {
+    margin: 5px 20px 5px 5px;
+}
+
 #peopleYoureFollowing {
     padding-left: 350px;
 }

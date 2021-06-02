@@ -29,12 +29,13 @@ block content
 
 		div(class="restOfBody")
 			div(class="latestStoriesList")
+
 				each story in stories
 					div(class="story" href=`/stories/${story.id}`)
 						a(href=`/stories/${story.id}`)
-							h1 #{story.title}
 							div(id='story-picture')
 								img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
+							h1 #{story.title}
 
 			div(class="follows")
 				if locals.authenticated
