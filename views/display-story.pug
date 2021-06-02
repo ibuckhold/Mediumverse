@@ -14,9 +14,10 @@ block content
         div(id='title-container')
             div(id='story-title') #{story.title}
             div(id='story-category') #{story.Category.name}
-            a(href=`/${story.User.id}` class="author")
-                h3(id='user-post') #{story.User.username}
-            h3 Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
+            div(id='user-info')
+                a(href=`/${story.User.id}` class="author")
+                  div(id='user-post') #{story.User.username}
+                div Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
         div(id='story-picture')
             img(src=story.imageURL)
         div(id='story-text') #{story.text}
@@ -53,10 +54,10 @@ block content
         div(id='all-comments')
             each comment in storyComments
                 div(class='user-comments' data-comment-id=comment.id)
-                    span(id='two' class='comment-creator') #{comment.User.username}
-                    div(class='posted-time') Posted: #{comment.createdAt.toLocaleDateString("en-US")}
                     div(id='comment-body' class='comment-body')
                         span(id='one' class='comment-text') #{comment.text}
+                    span(id='two' class='comment-creator') By: #{comment.User.username}
+                    div(class='posted-time') Posted: #{comment.createdAt.toLocaleDateString("en-US")}
                     div(id='comment-buttons-div' class='comment-buttons-div')
                         if locals.authenticated && user.id !== comment.userId
                             span(id=`likes-${comment.id}`) #{comment.Likes.length} people like this!
