@@ -32,39 +32,40 @@ block content
 								img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
 							h1 #{story.title}
 
-    div(class="restOfBody")
-      div(class="latestStoriesList")
-        each story in stories
-          div(class="story")
-            a(href=`/${story.userId}`)
-            h1 #{story.title}
-            div(id='story-picture')
-              img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
 
-      div(class="follows")
-        if locals.authenticated
-          h2(id="peopleYoureFollowing") People You're Following
-          each person in sendPeople
-            div(class="userFollowing" href=`/${person.dataValues.id}`)
-              a(href=`/${person.dataValues.id}`)
-                img(src="/images/avengers logo.png" class="otherUserImg")
-                p(class="otherUserLabel") #{person.dataValues.username}
+	div(class="restOfBody")
+		div(class="latestStoriesList")
+			each story in stories
+				div(class="story")
+					a(href=`/${story.userId}`)
+					h1 #{story.title}
+					div(id='story-picture')
+						img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
 
-    footer(class="footerContainer")
-      div(class="person")
-        p(class="name") Icarus Buckhold
-        a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/icarus-buckhold/')
-        a(class="icons fab fa-github-square" href='https://github.com/ibuckhold')
-      div(class="person")
-        p(class="name") Junaid Maknojia
-        a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/junaidmaknojia/')
-        a(class="icons fab fa-github-square" href='https://github.com/junaidmaknojia')
-      div(class="person")
-        p(class="name") Marc Carlson
-        a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/marc-carlson/')
-        a(class="icons fab fa-github-square" href='https://github.com/Mcarlson30')
-      div(class="person")
-        p(class="name") Min Ki Kim
-        a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/min-ki-kim-34888a156/')
-        a(class="icons fab fa-github-square" href='https://github.com/minkikim98')
+	div(class="follows")
+		if locals.authenticated
+			h2(id="peopleYoureFollowing") People You're Following
+			each person in sendPeople
+				div(class="userFollowing" href=`/${person.dataValues.id}`)
+				a(href=`/${person.dataValues.id}`)
+					img(src="/images/avengers logo.png" class="otherUserImg")
+					p(class="otherUserLabel") #{person.dataValues.username}
+
+	footer(class="footerContainer")
+		div(class="person")
+			p(class="name") Icarus Buckhold
+			a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/icarus-buckhold/')
+			a(class="icons fab fa-github-square" href='https://github.com/ibuckhold')
+		div(class="person")
+			p(class="name") Junaid Maknojia
+			a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/junaidmaknojia/')
+			a(class="icons fab fa-github-square" href='https://github.com/junaidmaknojia')
+		div(class="person")
+			p(class="name") Marc Carlson
+			a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/marc-carlson/')
+			a(class="icons fab fa-github-square" href='https://github.com/Mcarlson30')
+		div(class="person")
+			p(class="name") Min Ki Kim
+			a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/min-ki-kim-34888a156/')
+			a(class="icons fab fa-github-square" href='https://github.com/minkikim98')
 
