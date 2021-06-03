@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "categoryId"
     });
     Story.belongsTo(models.User, {
-      foreignKey: "id"
+      foreignKey: "userId"
     });
     Story.hasMany(models.Comment, {
       foreignKey: "storyId",

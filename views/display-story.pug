@@ -16,7 +16,7 @@ block content
             div(id='story-category') #{story.Category.name}
             div(id='user-info')
                 a(href=`/${story.User.id}` class="author")
-                  div(id='user-post') #{story.User.username}
+                    div(id='user-post') #{story.User.username}
                 div Last updated: #{story.updatedAt.toLocaleDateString("en-US")}
         div(id='story-picture')
             img(src=story.imageURL)
@@ -24,16 +24,22 @@ block content
 
         div(id='user-features')
             div(id='user-comments-div')
-                button(id='show-comments') Comments
+                button(id='show-comments') 
+                    i(class="fas fa-comments")
+                    div Comments
 
             if locals.authenticated && user.id === story.userId
                 div(id='modify-story')
                     div(id='story-edit')
                         form(action=`/stories/edit/${story.id}`)
-                            button(type='submit') Edit Story
+                            button(type='submit') 
+                                i(class="fas fa-edit")
+                                div Edit
                     div(id='story-delete')
                         form(action=`/stories/delete/${story.id}` method='post')
-                            button(type='submit') Delete Story
+                            button(type='submit') 
+                                i(class="fas fa-trash")
+                                div Delete
 
             else if locals.authenticated && user.id !== story.userId
                     div
