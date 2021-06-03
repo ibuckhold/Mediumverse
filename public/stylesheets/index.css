@@ -106,3 +106,21 @@ body {
 .story {
     border-bottom: solid rgba(0, 0, 0, 0.527) 1px;
 }
+
+.footerContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    border-top: 4px solid red;
+}
+
+.person {
+    margin: 1.6rem;
+}
+
+.icons {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    margin: 0.6rem;
+}
