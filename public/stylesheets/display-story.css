@@ -1,25 +1,33 @@
 #story-page{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#title-container{
-    padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: auto;
+    align-items: center;
+    width: 800px;
+    /* border: 1px solid green; */
+    margin: auto;
+}
+
+#title-container{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* width: auto; */
+    /* border: 1px solid red ; */
+    font-family: 'Open Sans', sans-serif;
+    /* border: 1px solid red; */
+    margin-bottom: 10px;
 }
 
 #story-title{
     display: flex;
     justify-content: center;
-    font-size: 5rem;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: auto;
+    font-size: 50px;
+    font-weight: 600;
+    /* padding: 10px; */
+    margin-bottom: 20px;
+    margin-top: 20px;
     max-width: 60vw;
     align-items: center;
     text-align: center;
@@ -28,8 +36,8 @@
 #story-category{
     display: flex;
     justify-content: flex-start;
-    width: 100%;
-    font-size: 2.5rem;
+    /* width: 100%; */
+    font-size: 30px;
 }
 #story-picture{
     max-width: 60vw;
@@ -43,18 +51,22 @@
 }
 
 #story-picture img{
-    max-width: 100%;
-    max-height: 1000px;
+    max-width: 600px;
+    /* max-height: 1000px;
     height: auto;
-    width: auto;
+    width: auto; */
     display: block;
 }
 
 #story-text{
-    width: 60vw;
-    font-size: 24px;
+    /* width: 100%; */
+    font-size: 16px;
     white-space: pre-wrap;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#user-info {
+    font-size: 16px;
 }
 
 #user-features{
@@ -88,6 +100,7 @@
     width: 90%;
     font-size: 14px;
     padding: 10px;
+    /* border: 1px solid red; */
 }
 
 #story-edit button{
@@ -102,12 +115,15 @@
 }
 
 #user-post{
-    margin-bottom: -2%;
+    /* margin-bottom: -2%; */
 }
 
 #all-comments{
     width: 90%;
-    overflow: scroll;
+    /* overflow: scroll; */
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid green; */
 }
 
 #add-text {
@@ -118,6 +134,8 @@
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
+    width: 100%;
+    /* border: 1px solid blue; */
 }
 
 #story-delete button {
@@ -165,10 +183,6 @@
     width: 90%;
 }
 
-.form-group{
-    width: 100%;
-}
-
 #text{
     width: 100%;
 }
@@ -190,27 +204,34 @@ textarea:focus{
     width: 100%;
 }
 
-.form-control{
+.form-control {
     width: 100%;
 }
 #comment-section{
-    width: 30%;
+    width: 20%;
     z-index: 1;
     position: fixed;
     visibility: hidden;
     height: 100%;
     right: 0px;
-    top: 112px;
+    top: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: rgb(247, 247, 247);
-    border-left: 2px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
 }
 
 /* Styling for comment's author. */
 .comment-creator {
-    font-size: 20px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.posted-time {
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 /* Styling for comment's body text. */
@@ -235,4 +256,8 @@ textarea:focus{
     background-color: rgb(247, 247, 247);
     border-style: none;
     color: blue;
+}
+
+.author {
+    text-decoration: none;
 }

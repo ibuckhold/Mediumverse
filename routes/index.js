@@ -1,19 +1,17 @@
 var express = require('express');
 const { csrfProtection, asyncHandler } = require('../utils');
 const { User, Story, Follow } = require("../db/models");
-const { Op } = require("sequelize");
 
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  // console.log("TEST---------")
   const stories = await Story.findAll({
     order: [["createdAt", "DESC"]],
-    limit: 5
+    limit: 10
   });
 
-  console.log(stories);
+  // roundabout way of finding people the user is following
   let userId
   let peopleYoureFollowing;
   let sendPeople;
@@ -26,6 +24,7 @@ router.get('/', async function(req, res, next) {
       },
       where: {id: userId}
     });
+    // the people the user is following
     sendPeople = peopleYoureFollowing[0].dataValues.otherPeople;
   }
   res.render('index', {stories, sendPeople});
@@ -48,7 +47,6 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
       where: {id: userId}
   })
 
-  // console.log(peopleYoureFollowing[0].dataValues.otherPeople);
   const sendPeople = peopleYoureFollowing[0].dataValues.otherPeople;
 
   res.render("user-stories", {

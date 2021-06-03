@@ -19,7 +19,7 @@ h2 {
 }
 
 div.blockText > p {
-    color: rgba(108, 106, 106, 0.788);
+    color: rgba(94, 84, 84, 0.788);
     font-size: 18px;
 }
 
@@ -38,26 +38,36 @@ div.blockText > p {
 
 .restOfBody {
     display: flex;
+    flex-direction: row;
 }
 
 .follows {
-    padding-top: 10px;
-    margin-left: 10px;
-    width: 500px;
+    padding: 0px 20px;
+    margin: 10px 10px;
+    width: 150px;
     display: flex;
-    justify-content: space-evenly;
-    border-left: rgba(0, 0, 0, 0.459) solid 1px;
+    flex-flow: column;
+    justify-content: flex-start;
+    /* border-left: rgba(0, 0, 0, 0.459) solid 1px; */
 }
 
-.labels > h2{
-    display: inline;
-    padding-left: 100px;
+.latestStoriesList {
+    margin-left: 100px;
+    width: 900px;
 }
 
-.labels {
+.story > * {
     display: flex;
+    flex-direction: row;
+    margin: 8px 0px;
+    border-bottom: solid rgba(0, 0, 0, 0.527) 1px;
+    text-decoration: none;
 }
 
-#peopleYoureFollowing {
-    padding-left: 350px;
+.story:hover {
+    background-color: rgba(211, 211, 211, 0.589);
+}
+
+#story-picture {
+    margin: 5px 20px 5px 5px;
 }
