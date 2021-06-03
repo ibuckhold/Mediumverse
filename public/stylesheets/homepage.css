@@ -91,6 +91,8 @@ h2 {
 .otherUserImg {
     width: 50px;
     height: auto;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .follows {
