@@ -10,11 +10,11 @@ block head
   script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
 
 block content
-    div(id='followDiv')
-        button(class="navButton" id="followButton" type="click" data-other-user-id=otherUser) Follow
-    div(class="following-Container")
+    div(id='follow-div')
+        button(class="nav-button" id="followButton" type="click" data-other-user-id=otherUser) Follow
+    div(class="following-container")
         if sendPeople.length > 0
-            h2 People They're Following
+            div(class="following-label") People They're Following
             each person in sendPeople
                 div(class="userFollowing" href=`/${person.dataValues.id}`)
                     a(href=`/${person.dataValues.id}`)

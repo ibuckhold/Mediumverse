@@ -14,7 +14,7 @@ block content
     form(action=`/stories/edit/${story.id}` method='post' class='create-story-form' enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=csrfToken)
         div(class='createStory-button' id='one')
-            button(type='submit' class="navButton") Update Story
+            button(type='submit' class="nav-button") Update Story
         div(class="categoryDiv")
             input(type="hidden" value=1 class="categoryInput" name="categoryId")
             each category in categories
@@ -27,9 +27,9 @@ block content
         div(class="textDiv")
             +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
         div(class="editImageUpload")
-            //- a(class="far fa-images navButton")
+            //- a(class="far fa-images nav-button")
             input(type='file' id="actual-btn" name='imageupload')
         div(class='createStory-button' id='two')
-            button(type='submit' class="navButton") Update Story
+            button(type='submit' class="nav-button") Update Story
         form(action=`/stories/delete/${story.id}` method='post')
-            button(type="submit" class="navButton" class="delete-button") Delete Story
+            button(type="submit" class="nav-button" class="delete-button") Delete Story

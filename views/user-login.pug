@@ -20,7 +20,7 @@ block content
       div(class="password-login")
         +field('Password:', 'password', null, 'password')
       div(class='py-4')
-        button(type='submit' class='btn btn-primary navButton') Login
+        button(type='submit' class='btn btn-primary nav-button') Login
         a(href='/' class='btn btn-warning ml-2') Cancel
     div(id="login-block-bottom")
       form(action='/user/login' method='post')
@@ -28,6 +28,6 @@ block content
         input(type='hidden' name='email' value='demo@demo.com')
         input(type='hidden' name='password' value='qwertyuiop321')
         //- div(class='py-4')
-        button(type='submit' class='btn btn-primary navButton') Demo User
+        button(type='submit' class='btn btn-primary nav-button') Demo User
       div
-        p: a(href='/user/signup') Don't have an account?
+        a(href='/user/signup') Don't have an account?

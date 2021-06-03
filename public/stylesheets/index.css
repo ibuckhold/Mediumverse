@@ -54,7 +54,7 @@ body {
     height: 30px;
 }
 
-.navButton {
+.nav-button {
     color: rgb(255, 200, 63);
 
     /* Transparent */
@@ -92,6 +92,7 @@ body {
     font-family: 'Marvel', sans-serif;
     /* font-family: 'Roboto', sans-serif; */
     font-size: 40px;
+    color: white;
 }
 
 /* Styling for welcome message. */
@@ -104,7 +105,6 @@ body {
 
 /* Styling for the elements in the nav-right header group. */
 .nav-right-element {
-    /* margin-left: 5px; */
     margin-right: 10px;
 }
 
@@ -114,18 +114,26 @@ body {
 }
 
 .story {
-    border-bottom: solid rgba(0, 0, 0, 0.527) 1px;
+    border-bottom: solid rgba(254, 254, 254, 0.527) 1px;
 }
 
-.footerContainer {
+.footer-container {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    border-top: 4px solid red;
+    border-top: 2px solid rgb(211, 9, 108);
+}
+
+.name {
+    color: white;
+    font-family: "Marvel", sans-serif;
+    text-align: center;
+    font-size: 18px;
 }
 
 .person {
-    margin: 1.6rem;
+    padding: 10px;
+    /* border: 1px solid red; */
 }
 
 .icons {
@@ -133,4 +141,12 @@ body {
     color: black;
     font-size: 1.5rem;
     margin: 0.6rem;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+.alert {
+    color: white;
 }

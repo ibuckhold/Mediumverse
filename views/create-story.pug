@@ -14,7 +14,7 @@ block content
     form(action='/stories/create' method='post' class='create-story-form' enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=csrfToken)
         div(class='createStory-button' id='one')
-            button(type='submit' class="navButton") Publish
+            button(type='submit' class="nav-button") Publish
         div(class="categoryDiv")
             input(type="hidden" value=1 class="categoryInput" name="categoryId")
             each category in categories
@@ -30,4 +30,4 @@ block content
             input(type="file" id="actual-btn" name='imageupload')
 
         div(class='createStory-button' id='two')
-            button(type='submit' class="navButton") Publish
+            button(type='submit' class="nav-button") Publish

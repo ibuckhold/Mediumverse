@@ -20,7 +20,7 @@
     margin-right: auto;
     /* margin-top: 30px; */
 
-    /* border: 1px solid red; */
+    border: 1px solid blue;
 }
 
 /* Styling for each story preview. */
@@ -36,20 +36,23 @@
 
     /* border: 1px solid green; */
     border-bottom: 1px solid grey;
+
+    color: white;
 }
 
 /* Stylings for story title. */
 .story-title {
     font-size: 30px;
     text-decoration: none;
+    color: white;
 }
 
 .story-title:visited {
-    color: black;
+    color: white;
 }
 
 .story-title:link {
-    color: black;
+    color: white;
 }
 
 /* Styling for story created info. */
@@ -80,7 +83,7 @@
 }
 
 .following {
-    background-color: rgb(31, 31, 255);
+    background-color: rgb(255, 200, 63);
     color: white;
     font-weight: bold;
 }
@@ -90,25 +93,33 @@
     justify-content: center;
 }
 
-#followDiv {
+#follow-div {
     display: flex;
     justify-content: center;
+    border: 1px solid green;
 }
 
 .otherUserImg {
     width: 50px;
     height: auto;
     justify-content: center;
+
 }
 
 #title {
     margin-left: 100px;
 }
 
-.following-Container {
+.following-container {
     display: flex;
 
     justify-content: center;
+
+    border: 1px solid red;
+}
+
+.following-label {
+    color: white;
 }
 
 .otherUserLabel {

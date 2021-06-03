@@ -20,15 +20,15 @@ html
             div(id='create-story-div' class="nav-right-element")
               a(class="far fa-plus-square createStoryIcon" href="/stories/create")
             form(action='/user/logout' method='post' class="nav-right-element")
-              button(type='submit' class="navButton" id="logout") LOG OUT
+              button(type='submit' class="nav-button" id="logout") LOG OUT
             div(id='profile-icon-div' class="nav-right-element")
               a(class="fas fa-mask profile-icon" href=`/${user.id}`)
 
           else
             div(id="login" class="nav-right-element")
-              button(class="navButton" onclick="window.location.href='/user/login'") LOGIN
+              button(class="nav-button" onclick="window.location.href='/user/login'") LOGIN
             div(id="signup" class="nav-right-element")
-              button(class="navButton" onclick="window.location.href='/user/signup'") SIGN UP
+              button(class="nav-button" onclick="window.location.href='/user/signup'") SIGN UP
     div(class="blocking-content")
       div(id="title-header") #{title}
       block content
