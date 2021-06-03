@@ -2,7 +2,7 @@ doctype html
 html
   head
       link(rel="preconnect" href="https://fonts.gstatic.com")
-      link(href="https://fonts.googleapis.com/css2?family=Marvel:wght@700&family=Open+Sans&display=swap" rel="stylesheet")
+      link(href="https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet")
       link(href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet")
       block head
         title Mediumverse
@@ -10,24 +10,25 @@ html
         script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
   body
     div(class="header-nav__container")
-      div(class="navLeft")
-        img(class="siteTitle" src='/images/text-1615324066260.png' onclick="window.location.href='/'")
+      div(class="nav-container")
+        div(class="navLeft")
+          img(class="siteTitle" src='/images/text-1615324066260.png' onclick="window.location.href='/'")
 
-      div(class="navRight")
-        if locals.authenticated
-          span(id="welcome-message" class="nav-right-element") Welcome, #{user.username}!
-          div(id='create-story-div' class="nav-right-element")
-            a(class="far fa-plus-square createStoryIcon" href="/stories/create")
-          form(action='/user/logout' method='post' class="nav-right-element")
-            button(type='submit' class="navButton" id="logout") LOG OUT
-          div(id='profile-icon-div' class="nav-right-element")
-            a(class="fas fa-mask profile-icon" href=`/${user.id}`)
+        div(class="navRight")
+          if locals.authenticated
+            span(id="welcome-message" class="nav-right-element") Welcome, #{user.username}!
+            div(id='create-story-div' class="nav-right-element")
+              a(class="far fa-plus-square createStoryIcon" href="/stories/create")
+            form(action='/user/logout' method='post' class="nav-right-element")
+              button(type='submit' class="navButton" id="logout") LOG OUT
+            div(id='profile-icon-div' class="nav-right-element")
+              a(class="fas fa-mask profile-icon" href=`/${user.id}`)
 
-        else
-          div(id="login")
-            button(class="navButton" onclick="window.location.href='/user/login'") LOGIN
-          div(id="signup")
-            button(class="navButton" onclick="window.location.href='/user/signup'") SIGN UP
+          else
+            div(id="login" class="nav-right-element")
+              button(class="navButton" onclick="window.location.href='/user/login'") LOGIN
+            div(id="signup" class="nav-right-element")
+              button(class="navButton" onclick="window.location.href='/user/signup'") SIGN UP
     div(class="blocking-content")
       div(id="title-header") #{title}
       block content

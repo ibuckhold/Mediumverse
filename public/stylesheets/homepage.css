@@ -1,34 +1,91 @@
-.welcomeBlock {
-    background-color: #fa7676c0;
-    width: auto;
-    height: 400px;
-    display: flex;
-    justify-content: space-between;
+.hero-image {
+    top: 0;
+    left: 0;
+    width: 80%;
+    z-index: -1;
+    margin-left: -5%;
+    /* margin-right: 300px; */
 }
 
-.blockText {
-    padding-left: 100px;
+.banner {
+    position: relative;
+    height: auto;
+    width: auto;
+
+    font-family: "Marvel", sans-serif;
+
+    /* margin-left: -300px; */
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* border: 3px solid red; */
+    /* background-image: url('/images/iron-man-hero.jpeg'); */
+}
+
+
+.welcome-block {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 40%;
+    
+    background-color: rgba(0, 0, 0, 0);
+    /* border: 1px solid green; */
+    
+    font-family: "Marvel", sans-serif;
+}
+
+.welcome-title {
+    /* position: absolute;
+    top: 300px;
+    letter-spacing: 5px; */
+    
+    color: white;
+    /* font-weight: 500; */
+    font-size: 5vw;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.welcome-text {
+    /* position: absolute;
+    top: 250px;
+    left: 1200px;
+    
+    width: 600px; */
+    
+    color: white;
+    text-align: center;
+    font-size: 1.4vw;
+    margin-top: 30px;
+}
+
+.homepage-body {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid green; */
 }
 
 h2 {
-    padding-top: 30px;
+    margin-top: 30px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 45px;
-    padding-bottom: 10px;
-    color: rgb(108, 106, 106);
-}
-
-div.blockText > p {
-    color: rgba(94, 84, 84, 0.788);
-    font-size: 18px;
-}
-
-.image {
-    align-self: center;
-    width: auto;
-    height: 70%;
-    padding-right: 100px;
-    background-color: unset;
+    margin-bottom: 10px;
+    /* color: rgb(108, 106, 106); */
+    color: white;
+    /* border: 1px solid red; */
 }
 
 .otherUserImg {
@@ -36,30 +93,45 @@ div.blockText > p {
     height: auto;
 }
 
-.restOfBody {
-    display: flex;
-    flex-direction: row;
-}
-
 .follows {
-    padding: 0px 20px;
-    margin: 10px 10px;
-    width: 150px;
+    /* padding: 0px 20px;
+    margin: 10px 10px; */
+    /* width: 150px; */
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
+
+    /* border: 1px solid blue; */
     /* border-left: rgba(0, 0, 0, 0.459) solid 1px; */
 }
 
-.latestStoriesList {
-    margin-left: 100px;
-    width: 900px;
+.latest-stories-list {
+    /* margin-left: 100px; */
+    /* width: 900px; */
+    /* border: 1px solid red; */
 }
 
-.story > * {
+.latest-stories-title {
+    color: white;
+    font-family: "Marvel", sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.follows-title {
+    color: white;
+    font-family: "Marvel", sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.story a {
     display: flex;
     flex-direction: row;
-    margin: 8px 0px;
+    align-items: center;
+    margin: 10px;
     border-bottom: solid rgba(0, 0, 0, 0.527) 1px;
     text-decoration: none;
 }
@@ -68,6 +140,13 @@ div.blockText > p {
     background-color: rgba(211, 211, 211, 0.589);
 }
 
-#story-picture {
-    margin: 5px 20px 5px 5px;
+.story-picture {
+    /* margin: 0px 10px 0px 10px; */
+    padding: 10px;
+}
+
+.story-title {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
 }
