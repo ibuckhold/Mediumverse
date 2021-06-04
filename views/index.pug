@@ -9,62 +9,47 @@ append head
 	script(src="/javascripts/index.js" type="module" defer)
 
 block content
-	//- h1= title
-	//- p Welcome to your Project Skeleton
-	//- NEW STUFF
-	body(class="body")
-		div(class= "welcomeBlock")
-			div(class="blockText")
-				h2 Welcome to Mediumverse!
-				p Times have changed, but the stories only get better!
-				p Explore unique perspectives from beings all over the
-				p multiverse and learn what they have to tell about a
-				p wide range of topics. Get started today!
-			img(src="/images/marvel3.png" class="image")
+	div(class="banner")
+		img(src="/images/iron-man-hero.jpeg" class="hero-image")
+		div(class="welcome-block")
+			div(class="welcome-title") Avengers Assemble!
+			div(class="welcome-text") Times have changed, but the stories only get better! Explore unique perspectives from beings all over the multiverse and 
+					| learn what they have to say about a wide range of topics. Get started today!
+	
+	div(class="homepage-body")
+		div(class="latest-stories-list")
+			div(class="latest-stories-title") Latest Stories
+			each story in stories
+				div(class="story" href=`/stories/${story.id}`)
+					a(href=`/stories/${story.id}`)
+						div(class='story-picture')
+							img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
+						div(class="story-title") #{story.title}
+		div(class="follows")
+				if locals.authenticated
+					div(class="follows-title") People You're Following
+					div(class="following-container")
+						each person in sendPeople
+							div(class="user-following" href=`/${person.dataValues.id}`)
+								a(href=`/${person.dataValues.id}` class="user-container")
+									img(src="/images/avengers logo.png" class="other-user-img")
+									div(class="other-user-label") #{person.dataValues.username}
 
-		div(class="restOfBody")
-			div(class="latestStoriesList")
-				h2 Latest Stories
-				each story in stories
-					div(class="story" href=`/stories/${story.id}`)
-						a(href=`/stories/${story.id}`)
-							div(id='story-picture')
-								img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
-							h1 #{story.title}
-
-    div(class="restOfBody")
-      div(class="latestStoriesList")
-        each story in stories
-          div(class="story")
-            a(href=`/${story.userId}`)
-            h1 #{story.title}
-            div(id='story-picture')
-              img(src=story.imageURL height="100" width="auto" href= `/${story.userId}`)
-
-      div(class="follows")
-        if locals.authenticated
-          h2(id="peopleYoureFollowing") People You're Following
-          each person in sendPeople
-            div(class="userFollowing" href=`/${person.dataValues.id}`)
-              a(href=`/${person.dataValues.id}`)
-                img(src="/images/avengers logo.png" class="otherUserImg")
-                p(class="otherUserLabel") #{person.dataValues.username}
-
-    footer(class="footerContainer")
-      div(class="person")
-        p(class="name") Icarus Buckhold
-        a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/icarus-buckhold/')
-        a(class="icons fab fa-github-square" href='https://github.com/ibuckhold')
-      div(class="person")
-        p(class="name") Junaid Maknojia
-        a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/junaidmaknojia/')
-        a(class="icons fab fa-github-square" href='https://github.com/junaidmaknojia')
-      div(class="person")
-        p(class="name") Marc Carlson
-        a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/marc-carlson/')
-        a(class="icons fab fa-github-square" href='https://github.com/Mcarlson30')
-      div(class="person")
-        p(class="name") Min Ki Kim
-        a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/min-ki-kim-34888a156/')
-        a(class="icons fab fa-github-square" href='https://github.com/minkikim98')
+	footer(class="footer-container")
+		div(class="person")
+			p(class="name") Icarus Buckhold
+			a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/icarus-buckhold/')
+			a(class="icons fab fa-github-square" href='https://github.com/ibuckhold')
+		div(class="person")
+			p(class="name") Junaid Maknojia
+			a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/junaidmaknojia/')
+			a(class="icons fab fa-github-square" href='https://github.com/junaidmaknojia')
+		div(class="person")
+			p(class="name") Marc Carlson
+			a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/marc-carlson/')
+			a(class="icons fab fa-github-square" href='https://github.com/Mcarlson30')
+		div(class="person")
+			p(class="name") Min Ki Kim
+			a(class="icons fab fa-linkedin" href='https://www.linkedin.com/in/min-ki-kim-34888a156/')
+			a(class="icons fab fa-github-square" href='https://github.com/minkikim98')
 

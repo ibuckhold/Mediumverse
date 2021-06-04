@@ -219,6 +219,8 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
 
     let storyLikes = await Like.count({ where: { storyId } });
 
+    // console.log(story)
+
     return res.render("display-story", {
         storyLikes,
         story,

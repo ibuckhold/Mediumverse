@@ -14,20 +14,20 @@ block content
     form(action='/stories/create' method='post' class='create-story-form' enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=csrfToken)
         div(class='createStory-button' id='one')
-            button(type='submit' class="navButton") Publish
+            button(type='submit' class="nav-button") Publish
         div(class="categoryDiv")
             input(type="hidden" value=1 class="categoryInput" name="categoryId")
             each category in categories
-                div(data-category-id=category.id class="categoryBox")
+                div(data-category-id=category.id class="category-box")
                     span(class=`categoryOption ${category.id === 1 ? "userSelected":""}` ) #{category.name}
-                        img(src="")
+                        //- img(src="")
         div(class="titleDiv")
-            +field('', 'title', story.title, "", "Title...", "textPlaceholder titleText")
+            +field('', 'title', story.title, "", "Title...", "text-placeholder title-text")
         div(class="textDiv")
-            +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
+            +field('', 'text', story.text, 'textarea', "Tell your story here...", "text-placeholder content-text")
         div(class="imageUpload")
             //- a(class="far fa-images navButton")
             input(type="file" id="actual-btn" name='imageupload')
 
         div(class='createStory-button' id='two')
-            button(type='submit' class="navButton") Publish
+            button(type='submit' class="nav-button") Publish

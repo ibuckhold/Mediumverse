@@ -7,29 +7,29 @@ block head
     link(rel='stylesheet' href='/stylesheets/create-story.css')
     link(rel='stylesheet' href='/stylesheets/index.css')
     script(src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous")
-    //- script(src="/javascripts/create-story.js" type="module")
+    script(src="/javascripts/create-story.js" type="module")
 
 block content
     +validationErrorSummary(errors)
     form(action=`/stories/edit/${story.id}` method='post' class='create-story-form' enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=csrfToken)
         div(class='createStory-button' id='one')
-            button(type='submit' class="navButton") Update Story
+            button(type='submit' class="nav-button") Update Story
         div(class="categoryDiv")
             input(type="hidden" value=1 class="categoryInput" name="categoryId")
             each category in categories
-                div(data-category-id=category.id class="categoryBox")
+                div(data-category-id=category.id class="category-box")
                     span(class=`categoryOption ${category.id === 1 ? "userSelected":""}` ) #{category.name}
-                        img(src="")
+                        //- img(src="")
         div(class="titleDiv")
-            +field('', 'title', story.title, "", "Title...", "textPlaceholder titleText")
+            +field('', 'title', story.title, "", "Title...", "text-placeholder title-text")
 
         div(class="textDiv")
-            +field('', 'text', story.text, 'textarea', "Tell your story here...", "textPlaceholder contentText")
+            +field('', 'text', story.text, 'textarea', "Tell your story here...", "text-placeholder content-text")
         div(class="editImageUpload")
-            //- a(class="far fa-images navButton")
+            //- a(class="far fa-images nav-button")
             input(type='file' id="actual-btn" name='imageupload')
         div(class='createStory-button' id='two')
-            button(type='submit' class="navButton") Update Story
+            button(type='submit' class="nav-button") Update Story
         form(action=`/stories/delete/${story.id}` method='post')
-            button(type="submit" class="navButton" class="delete-button") Delete Story
+            button(type="submit" class="nav-button" class="delete-button") Delete Story

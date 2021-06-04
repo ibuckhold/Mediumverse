@@ -1,14 +1,18 @@
-#story-page{
+#story-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     width: 800px;
     /* border: 1px solid green; */
+
     margin: auto;
+
+    color: white;
 }
 
-#title-container{
+#title-container {
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -20,7 +24,7 @@
     margin-bottom: 10px;
 }
 
-#story-title{
+#story-title {
     display: flex;
     justify-content: center;
     font-size: 50px;
@@ -33,13 +37,13 @@
     text-align: center;
 }
 
-#story-category{
+#story-category {
     display: flex;
     justify-content: flex-start;
     /* width: 100%; */
     font-size: 30px;
 }
-#story-picture{
+#story-picture {
     max-width: 60vw;
     max-height: 1000px;
     height: auto;
@@ -50,7 +54,7 @@
     margin-bottom: 20px;
 }
 
-#story-picture img{
+#story-picture img {
     max-width: 600px;
     /* max-height: 1000px;
     height: auto;
@@ -58,7 +62,7 @@
     display: block;
 }
 
-#story-text{
+#story-text {
     /* width: 100%; */
     font-size: 16px;
     white-space: pre-wrap;
@@ -69,7 +73,7 @@
     font-size: 16px;
 }
 
-#user-features{
+#user-features {
     width: 60vw;
     display: flex;
     justify-content: flex-end;
@@ -78,7 +82,7 @@
     padding-top: 15px;
 }
 
-#modify-story{
+#modify-story {
     display: flex;
     width: 40%;
     height: auto;
@@ -87,14 +91,14 @@
     border-top: 2px solid lightgrey;
 }
 
-#user-comments-div{
+#user-comments-div {
     width: 60%;
     border-top: 2px solid lightgrey;
     padding-top: 10px;
     padding-left: 10px;
 }
 
-.user-comments{
+.user-comments {
     height: auto;
     border-top: 2px solid lightgrey;
     width: 90%;
@@ -103,22 +107,31 @@
     /* border: 1px solid red; */
 }
 
-#story-edit button{
-    color:whitesmoke;
-    background-color:rgb(31, 31, 255);
-    border: black solid 1px;
-    border-radius: 5px;
-    font-size: medium;
-    padding: 10px 20px;
+#story-edit button {
+    display: flex;
+    align-items: center;
+
+    padding: 10px;
     margin-right: 5px;
+
+    color: rgb(255, 200, 63);
+    background-color:rgba(0, 0, 0, 0);
+    border: 1px solid rgb(255, 200, 63);
+    border-radius: 5px;
+
+    font-size: medium;
     height: 4vh;
 }
 
-#user-post{
+#story-edit button i {
+    margin-right: 10px;
+}
+
+#user-post {
     /* margin-bottom: -2%; */
 }
 
-#all-comments{
+#all-comments {
     width: 90%;
     /* overflow: scroll; */
     display: flex;
@@ -130,7 +143,7 @@
     width: 90%;
 }
 
-.form-group{
+.form-group {
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
@@ -139,51 +152,62 @@
 }
 
 #story-delete button {
-    color:whitesmoke;
-    background-color:rgb(31, 31, 255);
-    border: black solid 1px;
-    border-radius: 5px;
-    font-size: medium;
-    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+
+    padding: 10px;
     height: 4vh;
+
+    color: rgb(255, 200, 63);
+    background-color:rgba(0, 0, 0, 0);
+    border: 1px solid rgb(255, 200, 63);
+    border-radius: 5px;
+
+    font-size: medium;
 }
 
-#show-comments{
-    color:whitesmoke;
-    background-color:rgb(31, 31, 255);
-    border: black solid 1px;
+#story-delete button i {
+    margin-right: 10px;
+}
+
+#show-comments {
+    display: flex;
+    align-items: center;
+
+    color: rgb(255, 200, 63);
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgb(255, 200, 63);
     border-radius: 5px;
+
     font-size: medium;
     padding-left: 10px;
     padding-right: 10px;
     height: 4vh;
-    align-items: center;
 }
 
-#show-comments::before{
-    content: '\1F4AC';
-    align-items: center;
+#show-comments i {
+    margin-right: 10px;
 }
 
-#close-comments{
+#close-comments {
     width: 90%;
     display: flex;
     justify-content: flex-end;
 
 }
 
-#close-comments-button-div{
+#close-comments-button-div {
     padding: 5px;
     width: 20%;
     display: flex;
     justify-content: flex-end;
 
 }
-#create-comment-form{
+#create-comment-form {
     width: 90%;
 }
 
-#text{
+#text {
     width: 100%;
 }
 textarea{
@@ -191,30 +215,30 @@ textarea{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-textarea:focus{
+textarea:focus {
     outline: none;
 }
 
-#submit-comment-button{
+#submit-comment-button {
     margin-bottom: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.edit-form{
+.edit-form {
     width: 100%;
 }
 
 .form-control {
     width: 100%;
 }
-#comment-section{
+#comment-section {
     width: 20%;
     z-index: 1;
     position: fixed;
     visibility: hidden;
     height: 100%;
     right: 0px;
-    top: 110px;
+    top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -235,24 +259,24 @@ textarea:focus{
 }
 
 /* Styling for comment's body text. */
-.comment-body{
+.comment-body {
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;
     justify-content: flex-start;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#one{
+#one {
     font-size: 16px;
 }
 
 
 /* Styling for container for comment buttons. */
-.comment-buttons-div{
+.comment-buttons-div {
     display: flex;
 }
 
-.comment-div-buttons{
+.comment-div-buttons {
     background-color: rgb(247, 247, 247);
     border-style: none;
     color: blue;

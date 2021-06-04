@@ -1,4 +1,4 @@
-const followBtn = document.getElementById("followButton");
+const followBtn = document.getElementById("follow-button");
 
 async function checkFollow() {
     try {

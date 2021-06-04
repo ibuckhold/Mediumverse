@@ -1,3 +1,8 @@
+/* .user-stories-background {
+    background-image: linear-gradient(to bottom right pink, black);
+    border: 3px solid blue;
+} */
+
 /* Styling for title div. */
 #title-header {
     font-family: "Marvel", sans-serif;
@@ -20,7 +25,9 @@
     margin-right: auto;
     /* margin-top: 30px; */
 
-    /* border: 1px solid red; */
+    padding: 10px;
+
+    /* border: 1px solid blue; */
 }
 
 /* Styling for each story preview. */
@@ -36,20 +43,23 @@
 
     /* border: 1px solid green; */
     border-bottom: 1px solid grey;
+
+    color: white;
 }
 
 /* Stylings for story title. */
 .story-title {
     font-size: 30px;
     text-decoration: none;
+    color: white;
 }
 
 .story-title:visited {
-    color: black;
+    color: white;
 }
 
 .story-title:link {
-    color: black;
+    color: white;
 }
 
 /* Styling for story created info. */
@@ -70,17 +80,19 @@
 
 /* Styling for the buttons inside the button container. */
 .story-preview-buttons form button {
-    border: none;
+    border: 1px solid rgb(255, 200, 63);
+    border-radius: 5px;
     background: none;
 
     margin-right: 10px;
 
-    color: blue;
+    color: rgb(255, 200, 63);
     font-size: 18px;
+    font-family: "Marvel", sans-serif;
 }
 
 .following {
-    background-color: rgb(31, 31, 255);
+    background-color: rgb(255, 200, 63);
     color: white;
     font-weight: bold;
 }
@@ -90,46 +102,76 @@
     justify-content: center;
 }
 
-#followDiv {
+#follow-div {
     display: flex;
     justify-content: center;
+    /* border: 1px solid green; */
 }
 
-.otherUserImg {
-    width: 50px;
-    height: auto;
-    justify-content: center;
+#follow-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-#title {
+.other-user-img {
+    width: 30px;
+    /* height: auto; */
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* #title {
     margin-left: 100px;
-}
+} */
 
-.following-Container {
+.following-container {
     display: flex;
-
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 1100px;
+
+    /* border: 1px solid red; */
 }
 
-.otherUserLabel {
+.following-label {
+    color: white;
+    font-family: "Marvel", sans-serif;
     font-weight: bold;
-    font-style: italic;
-    padding-left: 4px;
+    font-size: 36px;
+
+    margin-right: 10px;
 }
 
-h2 {
-    text-align: center;
+.other-user-label {
+    /* padding: 10px; */
+    margin-left: 10px;
+    color: rgb(211, 9, 108);
+    font-family: "Open Sans", sans-serif;
 }
 
-.userFollowing {
-    justify-content: center;
+.user-following {
+    /* display: flex;
+    justify-content: center; */
     padding: 10px;
-    display: flex;
-    
+    border-radius: 10px;
+    /* border: 1px solid blue; */
 }
 
-.userFollowing a{
+.user-following:hover {
+    background-color: rgb(46, 46, 46);
+}
+
+.user-following a {
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
 }
 

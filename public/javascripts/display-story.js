@@ -1,4 +1,5 @@
-document.getElementById("likeButton").addEventListener("click", async event => {
+const likeButton = document.getElementById("likeButton");
+if (likeButton) likeButton.addEventListener("click", async event => {
     const storyId = event.target.dataset.storyId;
     try {
         // let fetching = await fetch(`/comments/create/${storyId}`, {method: "PATCH"})
