@@ -15,6 +15,10 @@ body {
     justify-content: start; */
 }
 
+.siteTitle {
+    cursor: pointer;
+}
+
 .header-nav__container {
     top: 0;
     left: 0;
