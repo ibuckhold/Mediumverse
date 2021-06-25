@@ -1,13 +1,11 @@
 # Mediumverse
 
-Mediumverse is a clone of popular article and story site, Medium, based in the Marvel Universe. Users can add and edit stories with a cover photo and make it public for site-wide reading. Any registered user can also like a story along with comment on other users' stories and like other comments. Lastly, users can follow other users and see their following 
-in their user dashboard. Create an account and get started!
+[Mediumverse](https://mediumverse-voyager.herokuapp.com/) is a clone of the popular article and story site, [Medium](https://medium.com/), thematically based in the Marvel Universe! Users can create and edit their own stories, upload a custom cover photo, and publish it publicly to make it available for site-wide reading. Users can also like and comment on stories, as well as follow any users that they might be interested in. Keep reading to get a preview!
 
-https://mediumverse-voyager.herokuapp.com/
-
-## Stack
+## Tech Stack
+   - Javascript
    - Node.js
-   - Express
+   - Express.js
    - PostgreSQL
    - Multer
    - HTML
